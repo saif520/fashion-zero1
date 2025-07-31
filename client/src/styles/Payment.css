@@ -1,0 +1,143 @@
+.payment-layout-container {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: space-between;
+  gap: 32px;
+  padding: 40px 5vw;
+  /* background-color: #f0f2f5; */
+} 
+.payment-page-wrapper {
+  min-height: 100vh;
+  /* background-color: #f0f2f5; */
+  padding: 20px 0;
+}
+
+.payment-column {
+  flex: 1;
+  min-width: 280px;
+  transition: all 0.3s ease;
+}
+
+/* Prioritize the form */
+.payment-form {
+  flex: 1.2;
+  display: flex;
+  flex-direction: column;
+  gap: 24px;
+  padding: 40px;
+  background-color: #ffffff;
+  border-radius: 14px;
+  box-shadow: 0 12px 30px rgba(0, 0, 0, 0.15);
+  border: 1px solid #e0e0e0;
+}
+
+.payment-form h2 {
+  text-align: center;
+  font-size: 28px;
+  font-weight: 700;
+  color: #222;
+}
+
+.payment-form label {
+  font-weight: 600;
+  margin-bottom: 6px;
+  color: #333;
+}
+
+.stripe-input {
+  padding: 14px;
+  border: 1px solid #ced4da;
+  border-radius: 8px;
+  background-color: #fff;
+  font-size: 1.05rem;
+  height: 48px;
+}
+
+.stripe-input:focus {
+  border-color: #4f46e5;
+  box-shadow: 0 0 0 0.25rem rgba(79, 70, 229, 0.25);
+}
+
+.card-details-row {
+  display: flex;
+  gap: 16px;
+  margin-top: 12px;
+}
+
+.card-details-row > div {
+  flex: 1;
+}
+
+.payment-btn {
+  width: 100%;
+  padding: 16px;
+  font-size: 18px;
+  font-weight: 600;
+  background-color: #4f46e5;
+  color: white;
+  border: none;
+  border-radius: 10px;
+  transition: background-color 0.3s ease;
+  margin-top: 10px;
+}
+
+.payment-btn:hover {
+  background-color: #3730a3;
+}
+
+.payment-summary{
+    flex: 0.6;
+}
+.shipping-info {
+  flex: 1.2;
+}
+
+.section-box {
+  /* background-color: #ffffff; */
+  padding: 20px;
+  border-radius: 10px;
+  /* box-shadow: 0 4px 14px rgba(0, 0, 0, 0.07);
+  transition: transform 0.3s ease, opacity 0.3s ease;  */
+}
+
+.section-box:hover {
+  transform: translateY(-2px);
+}
+
+.payment-summary p,
+.shipping-info p {
+  margin: 6px 0;
+  color: #444;
+}
+
+.payment-summary .total-amount {
+  font-size: 20px;
+  font-weight: bold;
+  margin-top: 10px;
+}
+
+.shipping-info h3 {
+  font-size: 1.25rem;
+  margin-bottom: 12px;
+}
+
+/* Responsive */
+@media (max-width: 1076px) {
+  .payment-layout-container {
+    flex-direction: column;
+    padding: 20px;
+  }
+
+  .payment-column {
+    max-width: 100%;
+    width: 100%;
+  }
+
+  .card-details-row {
+    flex-direction: column;
+  }
+
+  .payment-form {
+    padding: 30px;
+  }
+}

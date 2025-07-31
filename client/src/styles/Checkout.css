@@ -1,0 +1,94 @@
+.checkout-container {
+  display: flex;
+
+  flex-wrap: wrap;
+  justify-content: space-between;
+  gap: 2rem;
+  max-width: 1200px;
+  margin: 0 auto;
+  padding: 2rem 1rem;
+}
+
+/* Left: Form */
+.checkout-form {
+  flex: 1 1 60%;
+  background: #f9f9f9;
+  padding: 1.5rem;
+  border-radius: 8px;
+  box-shadow: 0 4px 10px rgba(0, 0, 0, 0.05);
+}
+
+/* Inputs */
+.checkout-form input,
+.checkout-form select {
+  display: block;
+  width: 100%;
+  margin: 0.6rem 0 0.6rem;
+  padding: 0.50rem;
+  border-radius: 4px;
+  border: 1px solid #ccc;
+  font-size: 1rem;
+}
+
+/* Right: Summary */
+.checkout-summary {
+  flex: 1 1 35%;
+  background: #fff;
+  padding: 1.5rem;
+  border-radius: 8px;
+  border: 1px solid #ddd;
+  box-shadow: 0 4px 10px rgba(0, 0, 0, 0.05);
+  height: fit-content;
+}
+
+.summary-item {
+  display: flex;
+  justify-content: space-between;
+  margin-bottom: 0.75rem;
+  font-size: 0.95rem;
+  color: #444;
+}
+
+.checkout-summary h4 {
+  margin-top: 1.5rem;
+  font-size: 1.2rem;
+  text-align: right;
+}
+
+/* Button */
+.place-order-btn {
+  width: 100%;
+  margin-top: 1.5rem;
+  padding: 0.9rem;
+  background-color: #000;
+  color: white;
+  border: none;
+  border-radius: 5px;
+  font-size: 1rem;
+  font-weight: bold;
+  cursor: pointer;
+  transition: background-color 0.3s ease;
+}
+
+.place-order-btn:hover {
+  background-color: #333;
+}
+
+/* Loading style */
+.checkout-loading {
+  text-align: center;
+  font-size: 1.5rem;
+  padding: 2rem;
+}
+
+/* Responsive: Stack vertically on small screens */
+@media (max-width: 768px) {
+  .checkout-container {
+    flex-direction: column;
+  }
+
+  .checkout-form,
+  .checkout-summary {
+    width: 100%;
+  }
+}

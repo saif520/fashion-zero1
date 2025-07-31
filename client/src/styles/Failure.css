@@ -1,0 +1,53 @@
+.failure-page {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  min-height: 80vh;
+  background-color: #fff1f2;
+  padding: 40px 20px;
+}
+
+.failure-box {
+  background: #ffffff;
+  padding: 40px 30px;
+  border-radius: 14px;
+  box-shadow: 0 12px 25px rgba(239, 68, 68, 0.2);
+  border-left: 8px solid #ef4444;
+  text-align: center;
+  max-width: 500px;
+}
+
+.failure-box h1 {
+  color: #b91c1c;
+  font-size: 28px;
+  margin-bottom: 16px;
+}
+
+.failure-box p {
+  font-size: 16px;
+  color: #333;
+  margin-bottom: 24px;
+}
+
+.failure-btn {
+  display: inline-block;
+  margin: 8px 6px;
+  padding: 12px 24px;
+  background-color: #ef4444;
+  color: white;
+  border-radius: 8px;
+  font-weight: 600;
+  text-decoration: none;
+  transition: background-color 0.3s ease;
+}
+
+.failure-btn:hover {
+  background-color: #b91c1c;
+}
+
+.failure-link {
+  display: inline-block;
+  margin-top: 10px;
+  color: #b91c1c;
+  text-decoration: underline;
+}
