@@ -1,6 +1,6 @@
 import React, { useEffect, useState } from "react";
 import { useNavigate } from "react-router-dom";
-import "../styles/wishlist.css";
+import "../styles/Wishlist.css";
 import { getMyWishlist, removeFromWishlist, moveToCart } from "../services/wishlistServices";
 import MoveToCartModal from "../components/MoveToCartModal";
 import { toast } from "react-toastify"; // ✅ added toast import
