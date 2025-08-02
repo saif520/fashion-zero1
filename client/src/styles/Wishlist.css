@@ -1,10 +1,9 @@
 .wishlist-container {
   max-width: 1200px;
   margin: 0 auto;
-  padding: 2rem;
+  padding: calc(var(--navbar-height, 120px)) 2rem 2rem;
   min-height: 80vh;
   background-color: #f8f9fa;
-  padding-top: 80px;
 }
 
 .wishlist-container h2 {
