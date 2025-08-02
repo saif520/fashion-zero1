@@ -1,12 +1,12 @@
 .home {
-  padding-top: var(--navbar-height, 120px);
+   padding-top: var(--navbar-height, 120px);
   font-family: 'Segoe UI', sans-serif;
 }
 
 /* Hero Section */
 .hero {
   background: url('/images/hero-banner.jpg') no-repeat center center/cover;
-  height: 400px;
+  height: 300px;
   display: flex;
   align-items: center;
   justify-content: center;
@@ -143,4 +143,17 @@
 .banner-image.active {
   opacity: 1;
   position: relative;
+}
+
+@media (max-width: 768px) {
+  .sliding-banner {
+    margin: 1rem 0 0; /* Reduce gap on small screens */
+    height: 160px; /* Optional: smaller banner on small devices */
+  }
+}
+
+@media (max-width: 480px) {
+  .sliding-banner {
+    height: 100px;
+  }
 }

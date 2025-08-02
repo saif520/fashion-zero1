@@ -4,9 +4,10 @@
 
 .product-grid {
   display: grid;
-  grid-template-columns: repeat(auto-fit, minmax(220px, 1fr)); /* match card width */
-  gap: 2rem; /* fixed gap between cards */
+  grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+  gap: 2rem;
   justify-content: center;
+  align-items: start; /* Optional */
 }
 
 .product-grid a {
@@ -99,3 +100,11 @@
 .rating-reviews .review-count {
   color: #666;
 }
+
+
+ @media (max-width: 472px) {
+  .product-grid {
+    grid-template-columns: 1fr;
+    justify-items: center; /* ✅ This centers individual cards inside the single column */
+  }
+} 
