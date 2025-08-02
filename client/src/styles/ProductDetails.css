@@ -1,6 +1,5 @@
 .product-detail-container {
-  padding: 2rem;
-  padding-top: 100px;
+  padding: calc(var(--navbar-height, 120px)) 2rem 2rem;
   max-width: 1200px;
   margin: auto;
 }

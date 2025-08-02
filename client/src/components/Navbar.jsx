@@ -41,6 +41,22 @@ const Navbar = () => {
     email: "saif@example.com",
   };
 
+    useEffect(() => {
+    const updateNavbarHeight = () => {
+      const navbar = document.querySelector(".navbar");
+      if (navbar) {
+        document.documentElement.style.setProperty(
+          "--navbar-height",
+          `${navbar.offsetHeight}px`
+        );
+      }
+    };
+
+    updateNavbarHeight(); // Initial
+    window.addEventListener("resize", updateNavbarHeight);
+    return () => window.removeEventListener("resize", updateNavbarHeight);
+  }, []);
+
   return (
     <header className="navbar">
       <div className="navbar-container">

@@ -1,6 +1,5 @@
 .product-container {
-  padding: 2rem;
-  padding-top: 100px; /* <-- add this */
+  padding-top: var(--navbar-height, 120px);
 }
 
 .product-grid {
