@@ -1,4 +1,4 @@
-# 🛍️ Fullstack Fashion eCommerce Website
+# 🛍️ fashion zero
 
 A modern, scalable, and full-featured **fashion eCommerce website** built using the **MERN stack** (MongoDB, Express, React, Node.js) with advanced functionality for both users and admins.
 
