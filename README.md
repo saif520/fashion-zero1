@@ -13,7 +13,7 @@ It includes a comprehensive **Admin Panel** for managing products, orders, users
 **Frontend | Backend | Fullstack** → ✅ Fullstack
 
 ## 🚀 Live Demo
-(Deploy link here, e.g., Vercel + Render/Netlify + Railway/Heroku)
+https://fashion-zero-client.onrender.com/
 
 ---
 
