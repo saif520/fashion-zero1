@@ -16,8 +16,7 @@ It includes a comprehensive **Admin Panel** for managing products, orders, users
 
 ## 🚀 Live Demo
 
-👉 [**fashion zero**](https://fashion-zero-client.onrender.com/)
-
+[**fashion zero**](https://fashion-zero-client.onrender.com/){:target="_blank"}
 
 ---
 
