@@ -6,7 +6,11 @@ It includes a comprehensive **Admin Panel** for managing products, orders, users
 
 > 💡 This is **not a clone** of any existing site — it has a **unique design and structure** developed from scratch with original styling, UX patterns, and features focused on fashion-first functionality.
 
+--
 
+## 📁 Project Type
+
+**Frontend | Backend | Fullstack** → ✅ Fullstack
 
 ## 🚀 Live Demo
 (Deploy link here, e.g., Vercel + Render/Netlify + Railway/Heroku)
