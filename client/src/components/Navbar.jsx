@@ -61,7 +61,7 @@ const Navbar = () => {
     <header className="navbar">
       <div className="navbar-container">
         {/* Logo */}
-        <Link to="/" className="navbar-logo">ZERO</Link>
+        <Link to="/" className="navbar-logo">fashion zero</Link>
 
         {/* Hamburger Menu */}
         <div className="menu-icon" onClick={toggleMenu}>
@@ -75,7 +75,7 @@ const Navbar = () => {
           <Link to="/category/shoes">Shoes</Link>
           <Link to="/category/shirts">Shirts</Link>
           <Link to="/category/tshirts">T-Shirts</Link>
-          <Link to="/category/jackets">Jackets</Link>
+          {/* <Link to="/category/jackets">Jackets</Link> */}
           <Link to="/category/accessories">Accessories</Link>
           <Link to="/category/electronics">Electronics</Link>
         </nav>
@@ -117,3 +117,4 @@ const Navbar = () => {
 };
 
 export default Navbar;
+
