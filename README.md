@@ -75,7 +75,7 @@ It includes a comprehensive **Admin Panel** for managing products, orders, users
 
 ## 📁 Folder Structure
 
-bash
+``bash
 root/
 ├── client/
 │ ├── node_modules/
