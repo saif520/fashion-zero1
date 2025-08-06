@@ -73,18 +73,44 @@ It includes a comprehensive **Admin Panel** for managing products, orders, users
 
 ---
 
+## 📁 Folder Structure
 
-## 📂 Folder Structure
+bash
+root/
+├── client/
+│ ├── node_modules/
+│ ├── public/
+│ ├── src/
+│ │ ├── assets/
+│ │ ├── components/
+│ │ ├── layout/ # Shared layout components (Header, Footer, etc.)
+│ │ ├── pages/ # All page-level React components
+│ │ ├── services/ # Axios API service functions
+│ │ ├── styles/ # CSS files
+│ │ ├── utils/ # Utility functions/helpers
+│ │ ├── .env # Environment variables for Vite
+│ │ ├── .gitignore
+│ │ ├── eslint.config.js
+│ │ ├── index.html # Main HTML file
+│ │ ├── README.md # Frontend-specific README (if any)
+│ │ ├── package-lock.json
+│ │ ├── package.json
+│ │ └── vite.config.js # Vite configuration
+│
+├── server/ # Backend (Node.js + Express)
+│ ├── automation/ # Scripts for automation (e.g. review emails)
+│ ├── controllers/ # Request handlers
+│ ├── database/ # MongoDB connection setup
+│ ├── middlewares/ # Custom Express middlewares
+│ ├── models/ # Mongoose models
+│ ├── node_modules/
+│ ├── routes/ # Express routes
+│ ├── utils/ # Utility functions/helpers
+│ ├── views/ # Email templates or other views
+│ ├── .env # Environment variables
+│ ├── .gitignore
+│ ├── app.js # App initialization
+│ ├── package-lock.json
+│ ├── package.json
+│ └── server.js # Main server entry point
 
-├── client/                # React frontend
-│   ├── src/
-│   │   ├── components/
-│   │   ├── pages/
-│   │   ├── styles/
-│   │   └── App.js
-├── server/                # Express backend
-│   ├── controllers/
-│   ├── models/
-│   ├── routes/
-│   ├── middlewares/
-│   └── server.js
