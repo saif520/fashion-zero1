@@ -17,28 +17,7 @@ It includes a comprehensive **Admin Panel** for managing products, orders, users
 ## Video Walkthrough of the project
  👉 <a href="https://youtu.be/2N29GB4qw90?si=gL1B43rYzqPPwf_1">project presentation</a>
 
-## 🧰 Tech Stack
-
-### 🔹 Frontend:
-- React (No TypeScript)
-- React Router DOM
-- Tailwind CSS or Bootstrap
-- Axios
-- Stripe (Card payments)
-- Toastify (Notifications)
-- JWT (with HttpOnly cookie)
-
-### 🔹 Backend:
-- Node.js
-- Express.js
-- MongoDB + Mongoose
-- Stripe API
-- Twilio + Nodemailer (for verification & emails)
-- dotenv, bcrypt, cookie-parser, etc.
-
----
-
-## ✨ Features
+ ## ✨ Features
 
 ### 👤 User Features:
 - Register & Login (JWT + HttpOnly Cookie)
@@ -70,6 +49,25 @@ It includes a comprehensive **Admin Panel** for managing products, orders, users
 ### 📧 Email & Notifications:
 - Order status email alerts
 - Review reminder after delivery
+
+## 🧰 Tech Stack
+
+### 🔹 Frontend:
+- React (No TypeScript)
+- React Router DOM
+- Tailwind CSS or Bootstrap
+- Axios
+- Stripe (Card payments)
+- Toastify (Notifications)
+- JWT (with HttpOnly cookie)
+
+### 🔹 Backend:
+- Node.js
+- Express.js
+- MongoDB + Mongoose
+- Stripe API
+- Twilio + Nodemailer (for verification & emails)
+- dotenv, bcrypt, cookie-parser, etc.
 
 ---
 
