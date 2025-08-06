@@ -21,7 +21,7 @@ It includes a comprehensive **Admin Panel** for managing products, orders, users
 
 ### 👤 User Features:
 - Register & Login (JWT + HttpOnly Cookie)
-- SMS & Email Verification
+- Phone Call & Email Verification
 - Browse Products (by category, search, filters)
 - Product Details (with ratings, stock by size/color)
 - Add to Cart / Wishlist
