@@ -15,7 +15,7 @@ It includes a comprehensive **Admin Panel** for managing products, orders, users
 👉 [**fashion zero**](https://fashion-zero-client.onrender.com/)
 
 ## Video Walkthrough of the project
-<a href="https://youtu.be/2N29GB4qw90?si=gL1B43rYzqPPwf_1">project presentation</a>
+ 👉 <a href="https://youtu.be/2N29GB4qw90?si=gL1B43rYzqPPwf_1">project presentation</a>
 
 ## 🧰 Tech Stack
 
