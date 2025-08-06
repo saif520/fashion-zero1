@@ -75,7 +75,7 @@ It includes a comprehensive **Admin Panel** for managing products, orders, users
 
 ## 📁 Folder Structure
 
-``bash
+```bash
 root/
 ├── client/
 │ ├── node_modules/
@@ -83,34 +83,34 @@ root/
 │ ├── src/
 │ │ ├── assets/
 │ │ ├── components/
-│ │ ├── layout/ # Shared layout components (Header, Footer, etc.)
-│ │ ├── pages/ # All page-level React components
-│ │ ├── services/ # Axios API service functions
-│ │ ├── styles/ # CSS files
-│ │ ├── utils/ # Utility functions/helpers
-│ │ ├── .env # Environment variables for Vite
+│ │ ├── layout/
+│ │ ├── pages/
+│ │ ├── services/
+│ │ ├── styles/
+│ │ ├── utils/
+│ │ ├── .env
 │ │ ├── .gitignore
 │ │ ├── eslint.config.js
-│ │ ├── index.html # Main HTML file
-│ │ ├── README.md # Frontend-specific README (if any)
+│ │ ├── index.html
+│ │ ├── README.md
 │ │ ├── package-lock.json
 │ │ ├── package.json
-│ │ └── vite.config.js # Vite configuration
+│ │ └── vite.config.js
 │
-├── server/ # Backend (Node.js + Express)
-│ ├── automation/ # Scripts for automation (e.g. review emails)
-│ ├── controllers/ # Request handlers
-│ ├── database/ # MongoDB connection setup
-│ ├── middlewares/ # Custom Express middlewares
-│ ├── models/ # Mongoose models
+├── server/
+│ ├── automation/
+│ ├── controllers/
+│ ├── database/
+│ ├── middlewares/
+│ ├── models/
 │ ├── node_modules/
-│ ├── routes/ # Express routes
-│ ├── utils/ # Utility functions/helpers
-│ ├── views/ # Email templates or other views
-│ ├── .env # Environment variables
+│ ├── routes/
+│ ├── utils/
+│ ├── views/
+│ ├── .env
 │ ├── .gitignore
-│ ├── app.js # App initialization
+│ ├── app.js
 │ ├── package-lock.json
 │ ├── package.json
-│ └── server.js # Main server entry point
+│ └── server.js
 
