@@ -124,3 +124,11 @@ fashion-zero1/
 
 This project is licensed under the MIT License — see the [LICENSE](./LICENSE) file for details.
 
+## 🙏 Acknowledgments
+
+- Special thanks to [MongoDB Atlas](https://www.mongodb.com/cloud/atlas) for cloud database hosting.
+- Thanks to [Vite](https://vitejs.dev/) for fast frontend build tooling.
+- Thanks to [Stripe](https://stripe.com/) for the payment gateway.
+- Thanks to [Twilio](https://www.twilio.com/) and [Nodemailer](https://nodemailer.com/) for communication support.
+- UI inspiration taken from modern fashion websites like Myntra, Nike, H&M, and Zara.
+
