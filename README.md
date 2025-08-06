@@ -118,4 +118,4 @@ fashion-zero1/
 
 ## 👤 Author
 
-- [Saifuddin Dhali](https://github.com/saif520)
+- <a href="https://github.com/saif520">Saifuddin Dhali</a>
