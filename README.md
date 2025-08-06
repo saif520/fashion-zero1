@@ -32,7 +32,6 @@ It includes a comprehensive **Admin Panel** for managing products, orders, users
 - Order Details Page
 - Leave Product Reviews (Rating + Comment)
 - Profile Dropdown (Edit Profile, Logout, etc.)
-- Dark Mode Support
 
 ### 📦 Admin Features:
 - Create / Edit / Delete Products
@@ -53,21 +52,24 @@ It includes a comprehensive **Admin Panel** for managing products, orders, users
 ## 🧰 Tech Stack
 
 ### 🔹 Frontend:
-- React (No TypeScript)
+- React (JavaScript, no TypeScript)
 - React Router DOM
 - Tailwind CSS or Bootstrap
-- Axios
-- Stripe (Card payments)
-- Toastify (Notifications)
-- JWT (with HttpOnly cookie)
+- Axios (for HTTP requests)
+- Stripe (for card payments)
+- React Toastify (notifications)
+- JWT (stored in HttpOnly cookies for security)
 
 ### 🔹 Backend:
 - Node.js
 - Express.js
-- MongoDB + Mongoose
-- Stripe API
-- Twilio + Nodemailer (for verification & emails)
-- dotenv, bcrypt, cookie-parser, etc.
+- MongoDB (hosted on **MongoDB Atlas**)
+- Mongoose (ODM for MongoDB)
+- Stripe API (payment gateway)
+- Twilio (for phone number verification)
+- Nodemailer (for sending emails)
+- Multiple utility packages:
+  - `dotenv`, `bcrypt`, `cookie-parser`, `cors`, `helmet` and more
 
 ---
 
