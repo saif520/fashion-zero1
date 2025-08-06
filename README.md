@@ -73,43 +73,18 @@ It includes a comprehensive **Admin Panel** for managing products, orders, users
 
 ---
 
-## 📂 Directory Structure
 
-root/
-├── client/
-│ ├── node_modules/
-│ ├── public/
-│ ├── src/
-│ │ ├── assets/
-│ │ ├── components/
-│ │ ├── layout/
-│ │ ├── pages/
-│ │ ├── services/
-│ │ ├── styles/
-│ │ ├── utils/
-│ │ ├── .env
-│ │ ├── .gitignore
-│ │ ├── eslint.config.js
-│ │ ├── index.html
-│ │ ├── README.md
-│ │ ├── package-lock.json
-│ │ ├── package.json
-│ │ └── vite.config.js
-│
-├── server/
-│ ├── automation/
-│ ├── controllers/
-│ ├── database/
-│ ├── middlewares/
-│ ├── models/
-│ ├── node_modules/
-│ ├── routes/
-│ ├── utils/
-│ ├── views/
-│ ├── .env
-│ ├── .gitignore
-│ ├── app.js
-│ ├── package-lock.json
-│ ├── package.json
-│ └── server.js
+## 📂 Folder Structure
 
+├── client/                # React frontend
+│   ├── src/
+│   │   ├── components/
+│   │   ├── pages/
+│   │   ├── styles/
+│   │   └── App.js
+├── server/                # Express backend
+│   ├── controllers/
+│   ├── models/
+│   ├── routes/
+│   ├── middlewares/
+│   └── server.js
