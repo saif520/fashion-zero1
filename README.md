@@ -76,7 +76,7 @@ It includes a comprehensive **Admin Panel** for managing products, orders, users
 ## 📁 Directory Structure
 
 ```bash
-root/
+fashion-zero1/
 ├── client/
 │ ├── node_modules/
 │ ├── public/
@@ -116,10 +116,6 @@ root/
 
 ---
 
-## How to Use
+## 👤 Author
 
-To run this project locally:
-
-  1. Clone this repository to your local machine.
-  2. Open the index.html file in your preferred web browser.
-  3. Explore the Bewakoof experience right from your device.
+- [Saifuddin Dhali](https://github.com/saif520)
