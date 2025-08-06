@@ -114,3 +114,12 @@ root/
 │ ├── package.json
 │ └── server.js
 
+---
+
+## How to Use
+
+To run this project locally:
+
+  1. Clone this repository to your local machine.
+  2. Open the index.html file in your preferred web browser.
+  3. Explore the Bewakoof experience right from your device.
