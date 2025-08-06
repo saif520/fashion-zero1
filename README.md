@@ -73,7 +73,7 @@ It includes a comprehensive **Admin Panel** for managing products, orders, users
 
 ---
 
-## 📁 Folder Structure
+## 📁 Directory Structure
 
 ```bash
 root/
