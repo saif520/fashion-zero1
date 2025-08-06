@@ -54,7 +54,7 @@ It includes a comprehensive **Admin Panel** for managing products, orders, users
 ### 🔹 Frontend:
 - React (JavaScript, no TypeScript)
 - React Router DOM
-- Tailwind CSS or Bootstrap
+- Plain CSS (custom styling)
 - Axios (for HTTP requests)
 - Stripe (for card payments)
 - React Toastify (notifications)
@@ -69,7 +69,7 @@ It includes a comprehensive **Admin Panel** for managing products, orders, users
 - Twilio (for phone number verification)
 - Nodemailer (for sending emails)
 - Multiple utility packages:
-  - `dotenv`, `bcrypt`, `cookie-parser`, `cors`, `helmet` and more
+  - `dotenv`, `bcrypt`, `cookie-parser`, `cors` and more
 
 ---
 
