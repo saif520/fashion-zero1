@@ -134,9 +134,8 @@ This project is licensed under the MIT License — see the [LICENSE](./LICENSE) 
 
 ---
 
-<h2>📸 Project Screenshot</h2>
-<p align="center">
-  <img src="client/src/assets/screenshots/home.png" alt="Home Page" width="600" />
-</p>
+## 📸 Project Screenshot
+
+![Home Page](client/src/assets/screenshots/home.png)
 
 
