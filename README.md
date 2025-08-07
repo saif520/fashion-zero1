@@ -182,7 +182,7 @@ This project is licensed under the MIT License — see the [LICENSE](./LICENSE) 
 ![OTP Verification](client/src/assets/screenshots/otp_verification.png)
 
 ### 🔁 Forgot Password
-![Forgot Password](client/src/assets/screenshots/fotgot_password.png)
+![Forgot Password](client/src/assets/screenshots/forgot_password.png)
 
 ### 🔄 Reset Password
 ![Reset Password](client/src/assets/screenshots/reset_password.png)
