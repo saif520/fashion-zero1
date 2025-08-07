@@ -132,3 +132,10 @@ This project is licensed under the MIT License — see the [LICENSE](./LICENSE) 
 - Thanks to [Twilio](https://www.twilio.com/) and [Nodemailer](https://nodemailer.com/) for communication support.
 - UI inspiration taken from modern fashion websites like Myntra, Nike, H&M, and Zara.
 
+---
+
+## 📸 Project Screenshot
+
+![Home Page](client/src/assets/screenshots/home.png)
+
+
