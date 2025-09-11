@@ -38,7 +38,7 @@ const Home = () => {
   return (
     <>
       <Navbar />
-       {/* Carousel at the top below Navbar */}
+      {/* Carousel at the top below Navbar */}
       <div className="home">
         {/* Hero Banner */}
         <SlidingBanner />
@@ -56,16 +56,48 @@ const Home = () => {
         <section className="categories">
           <h2>Explore Categories</h2>
           <div className="category-grid">
-            <Link to="/category/all" className="category-card all">All</Link>
-            <Link to="/category/clothing" className="category-card clothing">Clothing</Link>
-            <Link to="/category/shoes" className="category-card shoes">Shoes</Link>
-            <Link to="/category/shirts" className="category-card shirts">Shirts</Link>
-            <Link to="/category/tshirts" className="category-card tshirts">T-Shirts</Link>
-            <Link to="/category/jackets" className="category-card jackets">Jackets</Link>
-            <Link to="/category/accessories" className="category-card accessories">Accessories</Link>
-            <Link to="/category/electronics" className="category-card electronics">Electronics</Link>
-            <Link to="/category/fitness" className="category-card fitness">Fitness</Link>
-            <Link to="/category/homekitchen" className="category-card homekitchen">Home & Kitchen</Link>
+            <Link to="/search?categories=All" className="category-card all">
+              All
+            </Link>
+            <Link
+              to="/search?categories=Clothing"
+              className="category-card clothing"
+            >
+              Clothing
+            </Link>
+            <Link to="/search?categories=Shoes" className="category-card shoes">
+              Shoes
+            </Link>
+            <Link
+              to="/search?categories=Shirts"
+              className="category-card shirts"
+            >
+              Shirts
+            </Link>
+            <Link
+              to="/search?categories=Tshirts"
+              className="category-card tshirts"
+            >
+              T-Shirts
+            </Link>
+            <Link
+              to="/search?categories=Jackets"
+              className="category-card jackets"
+            >
+              Jackets
+            </Link>
+            <Link
+              to="/search?categories=Accessories"
+              className="category-card accessories"
+            >
+              Accessories
+            </Link>
+            <Link
+              to="/search?categories=Home%20%26%20Kitchen"
+              className="category-card homekitchen"
+            >
+              Home & Kitchen
+            </Link>
           </div>
         </section>
 
@@ -73,7 +105,9 @@ const Home = () => {
         <section className="call-to-action">
           <h2>Don't Miss Out!</h2>
           <p>Check out our latest deals and offers.</p>
-          <Link to="/offers" className="cta-btn">View Offers</Link>
+          <Link to="/offers" className="cta-btn">
+            View Offers
+          </Link>
         </section>
       </div>
       <Footer />

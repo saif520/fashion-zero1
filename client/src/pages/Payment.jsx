@@ -55,6 +55,7 @@ const PaymentForm = ({ orderItems, shippingInfo, totalAmount }) => {
       const orderData = {
         orderItems: orderItems.map((item) => ({
           product: item.product._id,
+          color: item.color,
           size: item.size,
           quantity: item.quantity,
         })),

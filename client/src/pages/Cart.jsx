@@ -1,3 +1,4 @@
+
 // src/pages/Cart.jsx
 import React, { useEffect, useState } from "react";
 import { useNavigate } from "react-router-dom";
@@ -11,12 +12,10 @@ import {
 import { toast } from "react-toastify";
 import Navbar from "../components/Navbar";
 
-
 const Cart = () => {
   const [cartItems, setCartItems] = useState([]);
   const [loading, setLoading] = useState(true);
   const navigate = useNavigate();
-
 
   const fetchCart = async () => {
     try {
@@ -33,9 +32,9 @@ const Cart = () => {
     fetchCart();
   }, []);
 
-  const handleQuantityChange = async (productId, size, delta) => {
+  const handleQuantityChange = async (productId, color, size, delta) => {
     const item = cartItems.find(
-      (i) => i.product._id === productId && i.size === size
+      (i) => i.product._id === productId && i.size === size && i.color === color
     );
     const newQuantity = item.quantity + delta;
     if (newQuantity < 1) return;
@@ -43,6 +42,7 @@ const Cart = () => {
     try {
       await updateCartItem({
         productId,
+        color,
         size,
         newQuantity,
       });
@@ -52,19 +52,19 @@ const Cart = () => {
     }
   };
 
-  const handleRemove = async (productId, size) => {
+  const handleRemove = async (productId, color, size) => {
     try {
-      await removeCartItem({ productId, size });
+      await removeCartItem({ productId, color, size });
       fetchCart();
       toast.success("Item removed from cart");
     } catch (err) {
-      toast.error(err.response?.data?.message || "Failed to move item");
+      toast.error(err.response?.data?.message || "Failed to remove item");
     }
   };
 
-  const handleMoveToWishlist = async (productId, size) => {
+  const handleMoveToWishlist = async (productId, color, size) => {
     try {
-      await moveToWishlist({ productId, size });
+      await moveToWishlist({ productId, color, size });
       fetchCart();
       toast.success("Moved to wishlist");
     } catch (err) {
@@ -72,14 +72,17 @@ const Cart = () => {
     }
   };
 
-  const getItemImage = (product) => {
-    const firstImage = product.colors[0]?.images[0];
-    return firstImage || "https://via.placeholder.com/150";
+  // ✅ Pick image based on selected color in cart item
+  const getItemImage = (product, selectedColor) => {
+    const colorObj = product.colors.find(
+      (c) => c.color.toLowerCase() === selectedColor.toLowerCase()
+    );
+    return colorObj?.images[0] || "https://via.placeholder.com/150";
   };
 
   const calculateSubtotal = () => {
     return cartItems.reduce((total, item) => {
-      const price = item.product.price * (1 - item.product.discount || 0);
+      const price = item.product.finalPrice || item.product.price;
       return total + price * item.quantity;
     }, 0);
   };
@@ -88,55 +91,106 @@ const Cart = () => {
 
   return (
     <>
-      <Navbar/>
+      <Navbar />
       <div className="cart-container">
-      <h2>Your Shopping Cart</h2>
-      {cartItems.length === 0 ? (
-        <div className="empty-cart-message">
-          <p>Your cart is empty.</p>
-          <a href="/category/all" className="go-shopping-btn">Go to Shopping</a>
-        </div>
-      ) : (
-        <>
-          <div className="cart-list">
-            {cartItems.map((item) => {
-              const price = item.product.price * (1 - item.product.discount || 0);
-              return (
-                <div key={`${item.product._id}-${item.size}`} className="cart-item">
-                  <img src={getItemImage(item.product)} alt={item.product.name} />
-                  <div className="cart-item-details">
-                    <h4>{item.product.name}</h4>
-                    <p>Size: {item.size}</p>
-                    <p>Price: ₹{price.toFixed(2)}</p>
-                    <div className="quantity-control">
-                      <button onClick={() => handleQuantityChange(item.product._id, item.size, -1)}>-</button>
-                      <span>{item.quantity}</span>
-                      <button onClick={() => handleQuantityChange(item.product._id, item.size, 1)}>+</button>
-                    </div>
-                    <p>Total: ₹{(price * item.quantity).toFixed(2)}</p>
-                    <div className="cart-item-actions">
-                      <button onClick={() => handleMoveToWishlist(item.product._id, item.size)}>
-                        Move to Wishlist
-                      </button>
-                      <button onClick={() => handleRemove(item.product._id, item.size)} className="remove-btn">
-                        Remove
-                      </button>
+        <h2>Your Shopping Cart</h2>
+        {cartItems.length === 0 ? (
+          <div className="empty-cart-message">
+            <p>Your cart is empty.</p>
+            <a href="/" className="go-shopping-btn">
+              Go to Shopping
+            </a>
+          </div>
+        ) : (
+          <>
+            <div className="cart-list">
+              {cartItems.map((item) => {
+                const price = item.product.finalPrice || item.product.price;
+                return (
+                  <div
+                    key={`${item.product._id}-${item.size}-${item.color}`}
+                    className="cart-item"
+                  >
+                    <img
+                      src={getItemImage(item.product, item.color)}
+                      alt={item.product.name}
+                    />
+                    <div className="cart-item-details">
+                      <h4>{item.product.name}</h4>
+                      <p>Color: {item.color}</p>
+                      <p>Size: {item.size}</p>
+                      <p>Price: ₹{price.toFixed(2)}</p>
+                      <div className="quantity-control">
+                        <button
+                          onClick={() =>
+                            handleQuantityChange(
+                              item.product._id,
+                              item.color,
+                              item.size,
+                              -1
+                            )
+                          }
+                        >
+                          -
+                        </button>
+                        <span>{item.quantity}</span>
+                        <button
+                          onClick={() =>
+                            handleQuantityChange(
+                              item.product._id,
+                              item.color,
+                              item.size,
+                              1
+                            )
+                          }
+                        >
+                          +
+                        </button>
+                      </div>
+
+                      <p>Total: ₹{(price * item.quantity).toFixed(2)}</p>
+                      <div className="cart-item-actions">
+                        <button
+                          onClick={() =>
+                            handleMoveToWishlist(
+                              item.product._id,
+                              item.color,
+                              item.size
+                            )
+                          }
+                        >
+                          Move to Wishlist
+                        </button>
+                        <button
+                          onClick={() =>
+                            handleRemove(
+                              item.product._id,
+                              item.color,
+                              item.size
+                            )
+                          }
+                          className="remove-btn"
+                        >
+                          Remove
+                        </button>
+                      </div>
                     </div>
                   </div>
-                </div>
-              );
-            })}
-          </div>
-          <div className="cart-summary">
-            <h3>Subtotal: ₹{calculateSubtotal().toFixed(2)}</h3>
-            <button className="checkout-btn" onClick={() => navigate("/checkout")}>
-            Proceed to Checkout
-          </button>
-
-          </div>
-        </>
-      )}
-    </div>
+                );
+              })}
+            </div>
+            <div className="cart-summary">
+              <h3>Subtotal: ₹{calculateSubtotal().toFixed(2)}</h3>
+              <button
+                className="checkout-btn"
+                onClick={() => navigate("/checkout")}
+              >
+                Proceed to Checkout
+              </button>
+            </div>
+          </>
+        )}
+      </div>
     </>
   );
 };

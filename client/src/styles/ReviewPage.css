@@ -1,7 +1,7 @@
 .review-page-container {
   max-width: 960px;
   margin: 0 auto 40px;
-  padding: calc(var(--navbar-height, 120px)) 1rem 1rem;
+  padding: calc(var(--navbar-height, 15px)) 1rem 1rem;
   font-family: 'Segoe UI', sans-serif;
 }
 

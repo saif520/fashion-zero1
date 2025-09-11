@@ -1,87 +1,157 @@
+
 import React, { useState, useRef, useEffect } from "react";
 import { Link, useNavigate } from "react-router-dom";
-import { FaUser, FaHeart, FaShoppingBag, FaBars } from "react-icons/fa";
+import {
+  FaHeart,
+  FaShoppingBag,
+  FaBars,
+  FaSearch,
+  FaUser,
+} from "react-icons/fa";
 import "../styles/Navbar.css";
 import ProfileDropdown from "./ProfileDropdown";
 
+const categoryData = {
+  Men: {
+    Topwear: [
+      "Tshirts",
+      "Casual Shirts",
+      "Formal Shirts",
+      "Sweatshirts",
+      "Jackets",
+      "Sweaters",
+      "Blazers",
+    ],
+    Bottomwear: ["Jeans", "Trousers", "Shorts", "Track Pants"],
+    Innerwear: ["Briefs", "Vests"],
+    Footwear: ["Casual Shoes", "Sports Shoes", "Formal Shoes"],
+  },
+  Women: {
+    "Western Wear": ["Tops", "Dresses", "Jumpsuits", "Shrugs"],
+    "Ethnic Wear": ["Kurtas", "Sarees", "Lehenga Cholis", "Salwar Suits"],
+    Footwear: ["Flats", "Heels", "Casual Shoes"],
+  },
+  Kids: {
+    Boys: ["Tshirts", "Shorts", "Ethnic Wear"],
+    Girls: ["Frocks", "Skirts", "Ethnic Wear"],
+  },
+  Beauty: {
+    Makeup: ["Lipstick", "Eyeliner", "Foundation", "Nail Polish"],
+    Skincare: ["Moisturizers", "Face Wash", "Sunscreen", "Serums"],
+    Haircare: ["Shampoo", "Conditioner", "Hair Oil", "Hair Mask"],
+    Fragrances: ["Perfume", "Body Mist", "Deodorant"],
+  },
+  "Home & Living": {
+    "Bed Linen & Furnishing": [
+      "Bedsheets",
+      "Bedding Sets",
+      "Blankets",
+      "Pillows",
+    ],
+    "Home Decor": ["Wall Art", "Clocks", "Photo Frames", "Showpieces"],
+    "Kitchen & Dining": [
+      "Cookware",
+      "Tableware",
+      "Storage Containers",
+      "Kitchen Tools",
+    ],
+    Bath: ["Towels", "Bath Mats", "Shower Curtains"],
+  },
+  Art: {
+    Paintings: [
+      "Oil Painting",
+      "Watercolor",
+      "Acrylic Painting",
+      "Digital Art",
+    ],
+    Sculptures: ["Wood Sculpture", "Metal Sculpture", "Clay Sculpture"],
+    Photography: ["Landscape", "Portrait", "Abstract"],
+    Crafts: ["Handmade Jewelry", "Paper Craft", "Pottery"],
+  },
+};
+
 const Navbar = () => {
   const [menuOpen, setMenuOpen] = useState(false);
+  const [activeCategory, setActiveCategory] = useState(null);
   const [keyword, setKeyword] = useState("");
-  const [showDropdown, setShowDropdown] = useState(false);
-  const dropdownRef = useRef();
+  const [showProfileDropdown, setShowProfileDropdown] = useState(false);
   const navigate = useNavigate();
-
-  const toggleMenu = () => {
-    setMenuOpen(!menuOpen);
-  };
+  const dropdownRef = useRef(null);
+  const hoverTimeout = useRef(null);
 
   const handleSearch = (e) => {
     e.preventDefault();
-    const trimmed = keyword.trim();
-    if (trimmed) {
-      navigate(`/search?keyword=${encodeURIComponent(trimmed)}`);
+    if (keyword.trim()) {
+      navigate(`/search?keyword=${keyword}`);
       setKeyword("");
     }
   };
 
-  // Close dropdown when clicking outside
   useEffect(() => {
-    const handleClickOutside = (e) => {
-      if (dropdownRef.current && !dropdownRef.current.contains(e.target)) {
-        setShowDropdown(false);
+    const handleClickOutside = (event) => {
+      if (dropdownRef.current && !dropdownRef.current.contains(event.target)) {
+        setActiveCategory(null);
       }
     };
     document.addEventListener("mousedown", handleClickOutside);
     return () => document.removeEventListener("mousedown", handleClickOutside);
   }, []);
 
-  // Mock user (replace with real auth user)
-  const user = {
-    name: "Saifuddin",
-    email: "saif@example.com",
-  };
-
-    useEffect(() => {
-    const updateNavbarHeight = () => {
-      const navbar = document.querySelector(".navbar");
-      if (navbar) {
-        document.documentElement.style.setProperty(
-          "--navbar-height",
-          `${navbar.offsetHeight}px`
-        );
-      }
-    };
-
-    updateNavbarHeight(); // Initial
-    window.addEventListener("resize", updateNavbarHeight);
-    return () => window.removeEventListener("resize", updateNavbarHeight);
-  }, []);
-
   return (
-    <header className="navbar">
-      <div className="navbar-container">
-        {/* Logo */}
-        <Link to="/" className="navbar-logo">fashion zero</Link>
+    <nav className="navbar">
+      <div className="navbar-left">
+        <FaBars className="hamburger" onClick={() => setMenuOpen(!menuOpen)} />
+        <Link to="/" className="logo">
+          Fashion Zero
+        </Link>
+        <ul className={`nav-links ${menuOpen ? "open" : ""}`}>
+          {Object.keys(categoryData).map((main) => (
+            <li
+              key={main}
+              className="nav-item"
+              onMouseEnter={() => setActiveCategory(main)}
+              onMouseLeave={() => setActiveCategory(null)}
+            >
+              {/* 🔗 Main category links */}
+              <Link to={`/search?categories=${encodeURIComponent(main)}`} className="main-link">
+                {main}
+              </Link>
+              {activeCategory === main && (
+                <div className="mega-menu" ref={dropdownRef}>
+                  {Object.entries(categoryData[main]).map(
+                    ([section, items]) => (
+                      <div key={section} className="mega-column">
+                        {/* 🔗 Section link (e.g., Topwear, Bottomwear) */}
+                        <h4>
+                          <Link to={`/search?categories=${encodeURIComponent(main)},${encodeURIComponent(section)}`}>
+                            {section}
+                          </Link>
+                        </h4>
+                        <ul>
+                          {items.map((item) => (
+                            <li key={item}>
+                              {/* 🔗 Subcategory links */}
+                              <Link
+                                to={`/search?categories=${encodeURIComponent(main)},${encodeURIComponent(section)},${encodeURIComponent(item)}`}
+                              >
+                                {item}
+                              </Link>
+                            </li>
+                          ))}
+                        </ul>
+                      </div>
+                    )
+                  )}
+                </div>
+              )}
+            </li>
+          ))}
+        </ul>
+      </div>
 
-        {/* Hamburger Menu */}
-        <div className="menu-icon" onClick={toggleMenu}>
-          <FaBars />
-        </div>
-
-        {/* Nav Links */}
-        <nav className={`navbar-links ${menuOpen ? "active" : ""}`}>
-          <Link to="/category/all">All</Link>
-          <Link to="/category/clothing">Clothing</Link>
-          <Link to="/category/shoes">Shoes</Link>
-          <Link to="/category/shirts">Shirts</Link>
-          <Link to="/category/tshirts">T-Shirts</Link>
-          {/* <Link to="/category/jackets">Jackets</Link> */}
-          <Link to="/category/accessories">Accessories</Link>
-          <Link to="/category/electronics">Electronics</Link>
-        </nav>
-
-        {/* Search */}
-        <form className="navbar-search" onSubmit={handleSearch}>
+      <div className="navbar-center">
+        <form className="search-form" onSubmit={handleSearch}>
+          <FaSearch className="search-icon" />
           <input
             type="text"
             placeholder="Search for products, brands and more"
@@ -89,32 +159,51 @@ const Navbar = () => {
             onChange={(e) => setKeyword(e.target.value)}
           />
         </form>
+      </div>
 
-        {/* Icons */}
-        <div className="navbar-icons">
-          <div className="icon" ref={dropdownRef} onClick={() => setShowDropdown((prev) => !prev)}>
-            <FaUser />
-            <span>Profile</span>
-            {showDropdown && (
-              <ProfileDropdown user={user} onClose={() => setShowDropdown(false)} />
-            )}
-          </div>
-
-          <Link to="/wishlist" className="icon">
-            <FaHeart />
-            <span>Wishlist</span>
-          </Link>
-
-          <Link to="/cart" className="icon">
-            <FaShoppingBag />
-            <span>Bag</span>
-          </Link>
+      <div className="navbar-right">
+        {/* Profile Hover with Delay */}
+        <div
+          className="nav-icon"
+          onMouseEnter={() => {
+            clearTimeout(hoverTimeout.current);
+            setShowProfileDropdown(true);
+          }}
+          onMouseLeave={() => {
+            hoverTimeout.current = setTimeout(() => {
+              setShowProfileDropdown(false);
+            }, 200);
+          }}
+        >
+          <FaUser />
+          <span>Profile</span>
+          {showProfileDropdown && (
+            <ProfileDropdown
+              onClose={() => setShowProfileDropdown(false)}
+              onMouseEnter={() => {
+                clearTimeout(hoverTimeout.current);
+                setShowProfileDropdown(true);
+              }}
+              onMouseLeave={() => {
+                hoverTimeout.current = setTimeout(() => {
+                  setShowProfileDropdown(false);
+                }, 200);
+              }}
+            />
+          )}
         </div>
 
+        <Link to="/wishlist" className="nav-icon">
+          <FaHeart />
+          <span>Wishlist</span>
+        </Link>
+        <Link to="/cart" className="nav-icon">
+          <FaShoppingBag />
+          <span>Bag</span>
+        </Link>
       </div>
-    </header>
+    </nav>
   );
 };
 
 export default Navbar;
-

@@ -1,0 +1,286 @@
+/* ================================ 📌 Sidebar =================================== */
+.filters-sidebar {
+  flex-shrink: 0;
+  width: 250px;
+  padding: 20px;
+  background: #fff;
+  border: 1px solid #eee;
+  box-shadow: 0 2px 6px rgba(0, 0, 0, 0.05);
+  height: fit-content;
+  position: sticky;
+  top: 30px;
+  box-sizing: border-box;
+
+  overflow-y: auto;
+  scrollbar-width: thin;           
+  scrollbar-color: #ccc transparent;
+}
+
+/* ✅ Nice scrollbar styling for Webkit (Chrome, Edge, Safari) */
+.filters-sidebar::-webkit-scrollbar {
+  width: 6px;
+}
+.filters-sidebar::-webkit-scrollbar-thumb {
+  background: #ccc;
+  border-radius: 4px;
+}
+.filters-sidebar::-webkit-scrollbar-track {
+  background: transparent;
+}
+
+.clear-filters {
+  width: 100%;
+  margin-top: 10px;
+  padding: 8px 12px;
+  font-size: 14px;
+  cursor: pointer;
+  border: 1px solid #ccc;
+  border-radius: 6px;
+  background: #fafafa;
+  margin-bottom: 16px;
+  transition: background 0.2s ease;
+}
+.clear-filters:hover {
+  background: #f0f0f0;
+}
+
+/* Groups */
+.filter-group { margin-bottom: 20px; }
+.filter-group h4 {
+  font-size: 15px;
+  font-weight: 600;
+  margin-bottom: 10px;
+  cursor: pointer;
+}
+.checkbox-list {
+  display: flex;
+  flex-direction: column;
+  gap: 6px;
+  font-size: 14px;
+}
+.checkbox-list label {
+  display: flex;
+  align-items: center;
+  gap: 6px;
+  cursor: pointer;
+
+  /* ✅ Hover feedback */
+  padding: 4px 6px;
+  border-radius: 4px;
+  transition: all 0.2s ease;
+}
+.checkbox-list label:hover {
+  background: #fff0f5;   /* very light pink background */
+}
+
+/* ✅ Price checkboxes */
+.filter-group .checkbox-list label {
+  font-size: 14px;
+  color: #333;
+}
+.filter-group .checkbox-list input[type="checkbox"] {
+  accent-color: #ff3f6c; /* Myntra pink */
+}
+
+/* Inputs */
+.price-inputs {
+  display: flex;
+  align-items: center;
+  gap: px;
+}
+.price-inputs input {
+  flex: 1;
+  width: 100%;
+  padding: 6px 10px;
+  font-size: 13px;
+  border: 1px solid #ddd;
+  border-radius: 6px;
+  box-sizing: border-box;
+}
+
+/* Colors */
+.filter-color-options { 
+  display: flex; 
+  flex-direction: column; 
+  gap: 6px; 
+}
+.filter-color-checkbox { 
+  display: flex; 
+  align-items: center; 
+  gap: 8px; 
+  cursor: pointer; 
+
+  /* ✅ Hover feedback */
+  padding: 4px 6px;
+  border-radius: 4px;
+  transition: all 0.2s ease;
+}
+.filter-color-checkbox:hover {
+  background: #fff0f5;
+}
+
+/* ✅ Small color circles only for Filters */
+.filter-color-circle {
+  width: 16px; 
+  height: 16px; 
+  border-radius: 50%;
+  border: 1px solid #ccc; 
+  display: inline-block;
+}
+
+/* ====================== 🎨 Color Circles ====================== */
+.filter-color-circle.black { background: #000000; }
+.filter-color-circle.white { background: #ffffff; border: 1px solid #ccc; }
+.filter-color-circle.gray { background: #808080; }
+.filter-color-circle.lightgray { background: #d3d3d3; }
+.filter-color-circle.darkgray { background: #505050; }
+
+.filter-color-circle.red { background: #ff0000; }
+.filter-color-circle.darkred { background: #8b0000; }
+.filter-color-circle.maroon { background: #800000; }
+.filter-color-circle.crimson { background: #dc143c; }
+.filter-color-circle.pink { background: #ffc0cb; }
+.filter-color-circle.hotpink { background: #ff69b4; }
+.filter-color-circle.deeppink { background: #ff1493; }
+
+.filter-color-circle.orange { background: #ffa500; }
+.filter-color-circle.darkorange { background: #ff8c00; }
+.filter-color-circle.coral { background: #ff7f50; }
+.filter-color-circle.tomato { background: #ff6347; }
+
+.filter-color-circle.yellow { background: #ffff00; }
+.filter-color-circle.gold { background: #ffd700; }
+.filter-color-circle.khaki { background: #f0e68c; }
+.filter-color-circle.beige { background: #f5f5dc; }
+
+.filter-color-circle.green { background: #008000; }
+.filter-color-circle.darkgreen { background: #006400; }
+.filter-color-circle.lightgreen { background: #90ee90; }
+.filter-color-circle.lime { background: #00ff00; }
+.filter-color-circle.seagreen { background: #2e8b57; }
+.filter-color-circle.teal { background: #008080; }
+.filter-color-circle.olive { background: #808000; }
+
+.filter-color-circle.blue { background: #0000ff; }
+.filter-color-circle.navy { background: #000080; }
+.filter-color-circle.darkblue { background: #00008b; }
+.filter-color-circle.royalblue { background: #4169e1; }
+.filter-color-circle.skyblue { background: #87ceeb; }
+.filter-color-circle.lightblue { background: #add8e6; }
+.filter-color-circle.steelblue { background: #4682b4; }
+.filter-color-circle.turquoise { background: #40e0d0; }
+.filter-color-circle.cyan { background: #00ffff; }
+.filter-color-circle.aqua { background: #00ffff; }
+
+.filter-color-circle.purple { background: #800080; }
+.filter-color-circle.violet { background: #ee82ee; }
+.filter-color-circle.indigo { background: #4b0082; }
+.filter-color-circle.lavender { background: #e6e6fa; }
+.filter-color-circle.magenta { background: #ff00ff; }
+.filter-color-circle.plum { background: #dda0dd; }
+
+.filter-color-circle.brown { background: #a52a2a; }
+.filter-color-circle.saddlebrown { background: #8b4513; }
+.filter-color-circle.chocolate { background: #d2691e; }
+.filter-color-circle.peru { background: #cd853f; }
+.filter-color-circle.tan { background: #d2b48c; }
+.filter-color-circle.wheat { background: #f5deb3; }
+
+.filter-color-circle.silver { background: #c0c0c0; }
+.filter-color-circle.lightsteel { background: #b0c4de; }
+.filter-color-circle.snow { background: #fffafa; }
+.filter-color-circle.mintgreen { background: #98ff98; }
+.filter-color-circle.peach { background: #ffe5b4; }
+.filter-color-circle.emeraldgreen { background: #50C878; }
+.filter-color-circle.navyblue { background: #000080; }
+.filter-color-circle.grey { background: #808080; }
+.filter-color-circle.assorted {
+  background: linear-gradient(45deg, red, yellow, green, blue, purple);
+}
+.filter-color-circle.olivegreen { background: #808000; }
+.filter-color-circle.golden { background: #FFD700; }
+
+/* ================================ 📌 Mobile Filters =================================== */
+.filters-toggle-btn {
+  display: none;
+  background: #ff3f6c; 
+  color: #fff;
+  border: none; 
+  padding: 10px 14px;
+  font-size: 15px; 
+  font-weight: 600;
+  border-radius: 6px; 
+  margin-bottom: 15px;
+  cursor: pointer;
+}
+.filters-toggle-btn:hover {
+  background: #e6355b;
+}
+
+.filters-overlay {
+  display: none;
+  position: fixed;
+  inset: 0;
+  background: rgba(0,0,0,0.4);
+  z-index: 999;
+}
+.filters-overlay.active {
+  display: block;
+}
+
+.filters-sidebar.show {
+  display: block;
+  transform: translateX(0);
+}
+.close-filters-btn {
+  background: none;
+  border: none;
+  font-size: 20px;
+  cursor: pointer;
+  display: none;
+}
+.filters-header-mobile {
+  display: flex; 
+  justify-content: space-between; 
+  align-items: center;
+}
+
+.show-more-btn {
+  background: none;
+  border: none;
+  color: #ff3f6c;
+  font-size: 13px;
+  font-weight: 600;
+  cursor: pointer;
+  padding: 4px 0;
+  margin-left: 4px;
+}
+.show-more-btn:hover {
+  text-decoration: underline;
+}
+
+/* Responsive adjustments */
+@media (max-width: 767.98px) {
+  .filters-toggle-btn {
+    display: block;
+  }
+  .filters-sidebar {
+    display: none;
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 65%;
+    max-width: 220px;
+    height: 100%;
+    background: #fff;
+    z-index: 1000;
+    padding: 16px;
+    box-shadow: 2px 0 8px rgba(0,0,0,0.2);
+    transform: translateX(-100%);
+    transition: transform 0.3s ease;
+    overflow-y: auto;
+  }
+  .close-filters-btn {
+    display: block;
+  }
+}

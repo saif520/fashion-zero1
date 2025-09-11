@@ -1,5 +1,6 @@
+
 .product-detail-container {
-  padding: calc(var(--navbar-height, 120px)) 2rem 2rem;
+  padding: calc(var(--navbar-height, 30px)) 2rem 2rem;
   max-width: 1200px;
   margin: auto;
 }
@@ -36,7 +37,7 @@
 }
 
 .product-info h1 {
-  margin-bottom: 1rem;
+  margin-bottom: 0.5rem;
   font-size: 2.2rem;
   color: #222;
 }
@@ -45,22 +46,214 @@
   font-size: 1.8rem;
   font-weight: bold;
   color: #ff3f6c;
-  margin-bottom: 1rem;
+  margin-bottom: 0.5rem;
 }
 
 .product-description {
   font-size: 1.1rem;
   color: #555;
-  margin-bottom: 1rem;
+  margin-bottom: 0.5rem;
   line-height: 1.6;
 }
 
 .product-category {
   font-size: 1rem;
   color: #777;
-  margin-bottom: 2rem;
+  margin-bottom: 1rem;
 }
 
+
+/* ✅ Color Options */
+.product-colors {
+  margin-bottom: 1rem;
+}
+
+.color-options {
+  display: flex;
+  gap: 0.75rem;
+  flex-wrap: wrap;
+}
+
+/* ✅ Color circle default */
+.color-circle {
+  width: 30px;
+  height: 30px;
+  border-radius: 50%;
+  border: 2px solid #ccc;
+  cursor: pointer;
+  display: inline-block;
+  box-shadow: 0 2px 5px rgba(0, 0, 0, 0.08);
+  color: transparent;
+}
+
+/* ✅ Hover (only highlight border) */
+.color-circle:hover {
+  border-color: #666;
+}
+
+/* ✅ Selected with same-color border ring */
+.color-circle.selected {
+  border: 2px solid transparent;
+  color: inherit;
+  box-shadow:
+    0 0 0 4px #fff,
+    0 0 0 6px currentColor,
+    0 2px 6px rgba(0,0,0,0.15);
+  transform: scale(1.1);
+}
+
+
+
+.selected-color-name {
+  margin-top: 0.5rem;
+  font-size: 0.95rem;
+  color: #333;
+}
+
+
+/* 🎨 Predefined Color Palette */
+.color-circle.black { background: #000000; color: #000000; }
+.color-circle.white { background: #ffffff; color: #ffffff; border: 1px solid #ccc; } /* white needs border */
+.color-circle.gray { background: #808080; color: #808080; }
+.color-circle.lightgray { background: #d3d3d3; color: #d3d3d3; }
+.color-circle.darkgray { background: #505050; color: #505050; }
+
+.color-circle.red { background: #ff0000; color: #ff0000; }
+.color-circle.darkred { background: #8b0000; color: #8b0000; }
+.color-circle.maroon { background: #800000; color: #800000; }
+.color-circle.crimson { background: #dc143c; color: #dc143c; }
+.color-circle.pink { background: #ffc0cb; color: #ffc0cb; }
+.color-circle.hotpink { background: #ff69b4; color: #ff69b4; }
+.color-circle.deeppink { background: #ff1493; color: #ff1493; }
+
+.color-circle.orange { background: #ffa500; color: #ffa500; }
+.color-circle.darkorange { background: #ff8c00; color: #ff8c00; }
+.color-circle.coral { background: #ff7f50; color: #ff7f50; }
+.color-circle.tomato { background: #ff6347; color: #ff6347; }
+
+.color-circle.yellow { background: #ffff00; color: #ffff00; }
+.color-circle.gold { background: #ffd700; color: #ffd700; }
+.color-circle.khaki { background: #f0e68c; color: #f0e68c; }
+.color-circle.beige { background: #f5f5dc; color: #f5f5dc; }
+
+.color-circle.green { background: #008000; color: #008000; }
+.color-circle.darkgreen { background: #006400; color: #006400; }
+.color-circle.lightgreen { background: #90ee90; color: #90ee90; }
+.color-circle.lime { background: #00ff00; color: #00ff00; }
+.color-circle.seagreen { background: #2e8b57; color: #2e8b57; }
+.color-circle.teal { background: #008080; color: #008080; }
+.color-circle.olive { background: #808000; color: #808000; }
+.color-circle.olivegreen { background: #808000; color: #808000; }
+.color-circle.emeraldgreen { background: #50c878; color: #50c878; }
+.color-circle.mintgreen { background: #98ff98; color: #98ff98; }
+
+.color-circle.blue { background: #0000ff; color: #0000ff; }
+.color-circle.navy { background: #000080; color: #000080; }
+.color-circle.darkblue { background: #00008b; color: #00008b; }
+.color-circle.royalblue { background: #4169e1; color: #4169e1; }
+.color-circle.skyblue { background: #87ceeb; color: #87ceeb; }
+.color-circle.lightblue { background: #add8e6; color: #add8e6; }
+.color-circle.steelblue { background: #4682b4; color: #4682b4; }
+.color-circle.turquoise { background: #40e0d0; color: #40e0d0; }
+.color-circle.cyan { background: #00ffff; color: #00ffff; }
+.color-circle.aqua { background: #00ffff; color: #00ffff; }
+.color-circle.navyblue { background: #000080; color: #000080; }
+
+.color-circle.purple { background: #800080; color: #800080; }
+.color-circle.violet { background: #ee82ee; color: #ee82ee; }
+.color-circle.indigo { background: #4b0082; color: #4b0082; }
+.color-circle.lavender { background: #e6e6fa; color: #e6e6fa; }
+.color-circle.magenta { background: #ff00ff; color: #ff00ff; }
+.color-circle.plum { background: #dda0dd; color: #dda0dd; }
+
+.color-circle.brown { background: #a52a2a; color: #a52a2a; }
+.color-circle.saddlebrown { background: #8b4513; color: #8b4513; }
+.color-circle.chocolate { background: #d2691e; color: #d2691e; }
+.color-circle.peru { background: #cd853f; color: #cd853f; }
+.color-circle.tan { background: #d2b48c; color: #d2b48c; }
+.color-circle.wheat { background: #f5deb3; color: #f5deb3; }
+
+.color-circle.silver { background: #c0c0c0; color: #c0c0c0; }
+.color-circle.lightsteel { background: #b0c4de; color: #b0c4de; }
+.color-circle.snow { background: #fffafa; color: #fffafa; }
+.color-circle.peach { background: #ffe5b4; color: #ffe5b4; }
+
+.color-circle.golden { background: #ffd700; color: #ffd700; }
+
+.color-circle.assorted {
+  background: linear-gradient(45deg, red, yellow, green, blue, purple);
+  color: transparent; /* text hidden for mixed colors */
+}
+
+
+
+/* ✅ Sizes */
+.size-label {
+  font-weight: 600;
+  margin-bottom: 0.5rem;
+}
+
+.size-options {
+  display: flex;
+  gap: 1rem;
+  margin-bottom: 0.5rem;
+  flex-wrap: wrap;
+}
+
+.size-circle {
+  width: 45px;
+  height: 45px;
+  border-radius: 50%;
+  border: 2px solid #ccc;
+  background-color: white;
+  color: #333;
+  font-weight: bold;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  cursor: pointer;
+  transition: all 0.3s ease;
+}
+
+.size-circle:hover {
+  border-color: #555;
+}
+
+.size-circle.selected {
+  background-color: #ff3f6c;
+  color: white;
+  border-color: #ff3f6c;
+}
+
+/* ✅ Quantity */
+.quantity-wrapper {
+  margin-bottom: 1rem;
+}
+
+.quantity-control {
+  display: flex;
+  align-items: center;
+  gap: 0.75rem;
+  margin-top: 0.25rem;
+}
+
+.quantity-control button {
+  padding: 0.3rem 0.8rem;
+  font-size: 1.1rem;
+  font-weight: bold;
+  border: 1px solid #ccc;
+  background-color: white;
+  cursor: pointer;
+  border-radius: 4px;
+}
+
+.quantity-control span {
+  min-width: 30px;
+  text-align: center;
+  font-size: 1.1rem;
+}
+
+/* ✅ Buttons */
 .product-buttons {
   display: flex;
   gap: 1rem;
@@ -97,72 +290,9 @@
   transform: translateY(-2px);
 }
 
-.size-label {
-  font-weight: 600;
-  margin-bottom: 0.5rem;
-}
-
-.size-options {
-  display: flex;
-  gap: 1rem;
-  margin-bottom: 1.5rem;
-  flex-wrap: wrap;
-}
-
-.size-circle {
-  width: 45px;
-  height: 45px;
-  border-radius: 50%;
-  border: 2px solid #ccc;
-  background-color: white;
-  color: #333;
-  font-weight: bold;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  cursor: pointer;
-  transition: all 0.3s ease;
-}
-
-.size-circle:hover {
-  border-color: #555;
-}
-
-.size-circle.selected {
-  background-color: #ff3f6c;
-  color: white;
-  border-color: #ff3f6c;
-}
-
-.quantity-wrapper {
-  margin-bottom: 1.5rem;
-}
-
-.quantity-control {
-  display: flex;
-  align-items: center;
-  gap: 0.75rem;
-  margin-top: 0.25rem;
-}
-
-.quantity-control button {
-  padding: 0.3rem 0.8rem;
-  font-size: 1.1rem;
-  font-weight: bold;
-  border: 1px solid #ccc;
-  background-color: white;
-  cursor: pointer;
-  border-radius: 4px;
-}
-
-.quantity-control span {
-  min-width: 30px;
-  text-align: center;
-  font-size: 1.1rem;
-}
-
+/* ✅ Rating Breakdown */
 .rating-breakdown {
-  margin-top: 3rem;
+  margin-top: 1rem;
   border-top: 1px solid #ddd;
   padding-top: 1.5rem;
 }
@@ -194,14 +324,15 @@
 .star-bar {
   flex: 1;
   height: 10px;
-  background: #eee;
-  border-radius: 4px;
+  background-color: #eee;
+  border-radius: 5px;
   overflow: hidden;
 }
 
 .star-bar .filled {
   height: 100%;
-  background: #faa507;
+  background-color: #f5a623;
+  transition: width 0.3s ease-in-out;
 }
 
 .star-count {
@@ -210,6 +341,33 @@
   color: #555;
 }
 
+/* ✅ Average Rating */
+.average-rating {
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+  margin-bottom: 1rem;
+  font-size: 1.1rem;
+  font-weight: 500;
+  color: #f5a623;
+}
+
+.star-visual {
+  display: flex;
+  align-items: center;
+}
+
+.star {
+  font-size: 1.4rem;
+  margin-right: 2px;
+}
+
+.average-rating-text {
+  font-size: 1rem;
+  color: #444;
+}
+
+/* ✅ Reviews */
 .review-section {
   margin-top: 3rem;
   border-top: 1px solid #ddd;
@@ -244,73 +402,7 @@
   color: #333;
 }
 
-
-.average-rating {
-  font-size: 1.1rem;
-  font-weight: 500;
-  margin-bottom: 0.75rem;
-  color: #f5a623;
-}
-
-.rating-breakdown ul {
-  list-style: none;
-  padding: 0;
-}
-
-.rating-breakdown li {
-  display: flex;
-  align-items: center;
-  gap: 1rem;
-  margin-bottom: 0.5rem;
-}
-
-.star-label {
-  width: 50px;
-}
-
-.star-bar {
-  flex: 1;
-  height: 10px;
-  background-color: #eee;
-  border-radius: 5px;
-  overflow: hidden;
-}
-
-.star-bar .filled {
-  height: 100%;
-  background-color: #f5a623;
-  transition: width 0.3s ease-in-out;
-}
-
-.star-count {
-  width: 30px;
-  text-align: right;
-}
-
-.average-rating {
-  display: flex;
-  align-items: center;
-  gap: 0.5rem;
-  margin-bottom: 1rem;
-}
-
-.star-visual {
-  display: flex;
-  align-items: center;
-}
-
-.star {
-  font-size: 1.4rem; /* Slightly bigger */
-  margin-right: 2px;
-}
-
-.average-rating-text {
-  font-size: 1rem;
-  color: #444;
-}
-
-
-/* Responsive */
+/* ✅ Responsive */
 @media (max-width: 768px) {
   .product-detail-card {
     flex-direction: column;

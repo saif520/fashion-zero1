@@ -2,18 +2,15 @@ import React, { useState, useEffect, useRef } from 'react';
 import { useNavigate } from 'react-router-dom';
 import { FaUser } from 'react-icons/fa';
 import '../styles/ProfileDropdown.css';
-import { getCurrentUser } from '../services/authServices';
-import { logoutUser } from '../services/authServices';
+import { getCurrentUser, logoutUser } from '../services/authServices';
 import { Context } from '../main';
 import { useContext } from 'react';
 import { toast } from 'react-toastify';
 
-
-const ProfileDropdown = ({ onClose }) => {
+const ProfileDropdown = ({ onClose, onMouseEnter, onMouseLeave }) => {
   const { setUser, setIsAuthenticated } = useContext(Context);
   const [closing, setClosing] = useState(false);
   const [userData, setUserData] = useState(null);
-  const dropdownRef = useRef();
   const navigate = useNavigate();
 
   const handleOptionClick = (path) => {
@@ -23,18 +20,6 @@ const ProfileDropdown = ({ onClose }) => {
       onClose();
     }, 200);
   };
-
-  const handleClickOutside = (e) => {
-    if (dropdownRef.current && !dropdownRef.current.contains(e.target)) {
-      setClosing(true);
-      setTimeout(onClose, 200);
-    }
-  };
-
-  useEffect(() => {
-    document.addEventListener('mousedown', handleClickOutside);
-    return () => document.removeEventListener('mousedown', handleClickOutside);
-  }, []);
 
   useEffect(() => {
     const fetchUser = async () => {
@@ -50,32 +35,35 @@ const ProfileDropdown = ({ onClose }) => {
   }, []);
 
   const handleLogout = async () => {
-  setClosing(true);
-  try {
-    const res = await logoutUser();  // res.message will contain "Logged out successfully."
-    setUser(null);
-    setIsAuthenticated(false);
+    setClosing(true);
+    try {
+      const res = await logoutUser();
+      setUser(null);
+      setIsAuthenticated(false);
 
-    toast.success(res.message || 'Logged out.', {
-      position: 'top-center',
-      autoClose: 2000,
-    });
+      toast.success(res.message || 'Logged out.', {
+        position: 'top-center',
+        autoClose: 2000,
+      });
 
-    setTimeout(() => {
-      onClose();  // Close dropdown
-    }, 200);
-  } catch (err) {
-    toast.error(
-      err.response?.data?.message || 'Logout failed. Please try again.',
-      { position: 'top-center', autoClose: 2000 }
-    );
-    setClosing(false);
-  }
-};
-
+      setTimeout(() => {
+        onClose();
+      }, 200);
+    } catch (err) {
+      toast.error(
+        err.response?.data?.message || 'Logout failed. Please try again.',
+        { position: 'top-center', autoClose: 2000 }
+      );
+      setClosing(false);
+    }
+  };
 
   return (
-    <div className={`profile-dropdown ${closing ? 'fade-out' : 'fade-in'}`} ref={dropdownRef}>
+    <div
+      className={`profile-dropdown ${closing ? 'fade-out' : 'fade-in'}`}
+      onMouseEnter={onMouseEnter}
+      onMouseLeave={onMouseLeave}
+    >
       <div className="profile-header">
         <div className="profile-icon-wrapper">
           <FaUser className="profile-icon" />

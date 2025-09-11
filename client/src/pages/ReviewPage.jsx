@@ -76,60 +76,73 @@ const ReviewPage = () => {
 
   return (
     <>
-      <Navbar/>
+      <Navbar />
       <div className="review-page-container">
-      <h2>Leave a Review</h2>
-      <p>Order ID: {order._id}</p>
+        <h2>Leave a Review</h2>
+        <p>Order ID: {order._id}</p>
 
-      {order.orderItems.map((item) => (
-        <div key={item._id} className="review-card">
-          <div className="review-product">
-            <img
-              src={item.product?.colors?.[0]?.images?.[0] || "/no-image.png"}
-              alt={item.product?.name}
-            />
-            <div>
-              <h4>{item.product?.name}</h4>
-              <p>Category: {item.product?.category}</p>
+        {order.orderItems.map((item) => (
+          <div key={item._id} className="review-card">
+            <div className="review-product">
+              {(() => {
+                const colorObj = item.product?.colors?.find(
+                  (c) => c.color.toLowerCase() === item.color?.toLowerCase()
+                );
+                const image =
+                  colorObj?.images?.[0] ||
+                  item.product?.images?.[0] ||
+                  "/no-image.png";
+
+                return (
+                  <>
+                    <img src={image} alt={item.product?.name} />
+                    <div>
+                      <h4>{item.product?.name}</h4>
+                      <p>Category: {item.product?.category}</p>
+                      {item.color && <p>Color: {item.color}</p>}
+                      {item.size && <p>Size: {item.size}</p>}
+                    </div>
+                  </>
+                );
+              })()}
+            </div>
+
+            <div className="review-form">
+              <label>
+                Rating:
+                <select
+                  value={reviews[item.product._id]?.rating || ""}
+                  onChange={(e) =>
+                    handleChange(item.product._id, "rating", e.target.value)
+                  }
+                >
+                  <option value="">Select</option>
+                  {[1, 2, 3, 4, 5].map((star) => (
+                    <option key={star} value={star}>
+                      {star} ★
+                    </option>
+                  ))}
+                </select>
+              </label>
+
+              <label>
+                Comment:
+                <textarea
+                  placeholder="Write your feedback..."
+                  value={reviews[item.product._id]?.comment || ""}
+                  onChange={(e) =>
+                    handleChange(item.product._id, "comment", e.target.value)
+                  }
+                />
+              </label>
+
+              <button onClick={() => handleSubmit(item.product._id)}>
+                Submit Review
+              </button>
             </div>
           </div>
-
-          <div className="review-form">
-            <label>
-              Rating:
-              <select
-                value={reviews[item.product._id]?.rating || ""}
-                onChange={(e) =>
-                  handleChange(item.product._id, "rating", e.target.value)
-                }
-              >
-                <option value="">Select</option>
-                {[1, 2, 3, 4, 5].map((star) => (
-                  <option key={star} value={star}>
-                    {star} ★
-                  </option>
-                ))}
-              </select>
-            </label>
-
-            <label>
-              Comment:
-              <textarea
-                placeholder="Write your feedback..."
-                value={reviews[item.product._id]?.comment || ""}
-                onChange={(e) =>
-                  handleChange(item.product._id, "comment", e.target.value)
-                }
-              />
-            </label>
-
-            <button onClick={() => handleSubmit(item.product._id)}>
-              Submit Review
-            </button>
-          </div>
-        </div>
-      ))}
-    </div>
+        ))}
+      </div>
     </>
   );
 };

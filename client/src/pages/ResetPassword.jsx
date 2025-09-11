@@ -13,7 +13,7 @@ const ResetPassword = () => {
 
   const handleResetPassword=async(e)=>{
     e.preventDefault();
-    await axios.put(`https://fashion-zero-server.onrender.com/api/v1/user/password/reset/${token}`,{password,confirmPassword},{
+    await axios.put(`http://localhost:8000/api/v1/user/password/reset/${token}`,{password,confirmPassword},{
       withCredentials: true,
       headers:{
         "Content-Type": "application/json",

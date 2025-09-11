@@ -16,7 +16,13 @@ const productSchema = new mongoose.Schema({
   slug: { type: String, required: true, unique: true },
   description: { type: String },
   brand: { type: String },
+
+  // Primary category (main placement)
   category: { type: String, required: true },
+
+  // Additional categories (for filtering & multiple placements)
+  categories: [{ type: String }],
+
   gender: { type: String, enum: ['Men', 'Women', 'Unisex', 'Kids'], required: true },
   price: { type: Number, required: true },
   discount: { type: Number, default: 0 },
@@ -29,9 +35,10 @@ const productSchema = new mongoose.Schema({
   reviewsCount: { type: Number, default: 0 },
   isFeatured: { type: Boolean, default: false },
   isNewArrival: { type: Boolean, default: false },
-  // Add admin reference
+
+  // Admin who created the product
   admin: { type: mongoose.Schema.Types.ObjectId, ref: "User", required: true }
 }, { timestamps: true });
 
 const Product = mongoose.model('Product', productSchema);
-export default Product; 
+export default Product;

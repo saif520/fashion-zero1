@@ -1,5 +1,5 @@
 .cart-container {
-  padding: calc(var(--navbar-height, 120px)) 1rem 2rem;
+  padding: calc(var(--navbar-height, 20px)) 1rem 2rem;
   max-width: 1000px;
   margin: auto;
 }
@@ -118,6 +118,8 @@
 ---------------------- */
 
 @media (max-width: 464px) {
+
+
   .cart-item {
     flex-direction: column;
     align-items: center;

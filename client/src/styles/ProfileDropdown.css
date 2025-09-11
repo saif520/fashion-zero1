@@ -1,11 +1,10 @@
-/* styles/ProfileDropdown.css */
 .profile-dropdown {
   position: fixed;
   top: 60px;
   right: 10px;
   width: 230px;
   background-color: #fff;
-  border-radius: 8px;
+  /* border-radius: 8px; */
   box-shadow: 0 4px 15px rgba(0, 0, 0, 0.15);
   z-index: 9999;
   overflow: hidden;
@@ -98,3 +97,4 @@
 .profile-options button:hover {
   background-color: #f5f5f5;
 }
+ 

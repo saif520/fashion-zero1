@@ -1,5 +1,5 @@
 .home {
-   padding-top: var(--navbar-height, 120px);
+   padding-top: var(--navbar-height, 10px);
   font-family: 'Segoe UI', sans-serif;
 }
 

@@ -1,3 +1,5 @@
+
+// src/pages/Checkout.jsx
 import React, { useEffect, useState } from "react";
 import "../styles/Checkout.css";
 import { getMyCart } from "../services/cartServices";
@@ -8,7 +10,7 @@ import { toast } from "react-toastify";
 const Checkout = () => {
   const [cartItems, setCartItems] = useState([]);
   const [shippingInfo, setShippingInfo] = useState({ address: "", phone: "" });
-  const [paymentMethod, setPaymentMethod] = useState("COD");
+  const [paymentMethod, setPaymentMethod] = useState("CARD");
   const [loading, setLoading] = useState(true);
   const navigate = useNavigate();
 
@@ -27,69 +29,70 @@ const Checkout = () => {
     fetchCart();
   }, []);
 
+  // ✅ Use finalPrice if available, fallback to price
   const calculateTotalAmount = () => {
     return cartItems.reduce((acc, item) => {
-      const price = item.product.price * (1 - item.product.discount || 0);
+      const price = item.product.finalPrice || item.product.price;
       return acc + price * item.quantity;
     }, 0);
   };
 
   const handlePlaceOrder = async () => {
-  const totalAmount = calculateTotalAmount();
+    const totalAmount = calculateTotalAmount();
 
-  const requiredFields = [
-    { value: shippingInfo.name, label: "Full Name" },
-    { value: shippingInfo.phone, label: "Phone Number" },
-    { value: shippingInfo.pincode, label: "Pincode" },
-    { value: shippingInfo.address, label: "Full Address" },
-    { value: shippingInfo.city, label: "City" },
-    { value: shippingInfo.state, label: "State" },
-  ];
+    const requiredFields = [
+      { value: shippingInfo.name, label: "Full Name" },
+      { value: shippingInfo.phone, label: "Phone Number" },
+      { value: shippingInfo.pincode, label: "Pincode" },
+      { value: shippingInfo.address, label: "Full Address" },
+      { value: shippingInfo.city, label: "City" },
+      { value: shippingInfo.state, label: "State" },
+    ];
 
-  for (const field of requiredFields) {
-    if (!field.value || field.value.trim() === "") {
-      return toast.error(`Please enter ${field.label}`);
+    for (const field of requiredFields) {
+      if (!field.value || field.value.trim() === "") {
+        return toast.error(`Please enter ${field.label}`);
+      }
     }
-  }
 
-  if (!/^\d{10}$/.test(shippingInfo.phone)) {
-    return toast.error("Phone number must be exactly 10 digits");
-  }
+    if (!/^\d{10}$/.test(shippingInfo.phone)) {
+      return toast.error("Phone number must be exactly 10 digits");
+    }
 
-  if (!paymentMethod) {
-    return toast.error("Please select a payment method");
-  }
+    if (!paymentMethod) {
+      return toast.error("Please select a payment method");
+    }
 
-  const orderData = {
-    orderItems: cartItems.map((item) => ({
-      product: item.product._id,
-      size: item.size,
-      quantity: item.quantity,
-    })),
-    shippingInfo,
-    paymentInfo: { method: paymentMethod },
-    totalAmount,
+    const orderData = {
+      orderItems: cartItems.map((item) => ({
+        product: item.product._id,
+        color: item.color,
+        size: item.size,
+        quantity: item.quantity,
+      })),
+      shippingInfo,
+      paymentInfo: { method: paymentMethod },
+      totalAmount,
+    };
+
+    try {
+      if (paymentMethod === "COD") {
+        await createOrder(orderData);
+        toast.success("Order placed successfully!");
+        navigate("/my-orders");
+      } else {
+        navigate("/payment", {
+          state: {
+            orderItems: cartItems,
+            shippingInfo,
+            totalAmount,
+          },
+        });
+      }
+    } catch (err) {
+      toast.error(err.response?.data?.message || "Failed to place order");
+    }
   };
-
-  try {
-    if (paymentMethod === "COD") {
-      const res = await createOrder(orderData);
-      toast.success("Order placed successfully!");
-      navigate("/my-orders");
-    } else {
-      navigate("/payment", {
-        state: {
-          orderItems: cartItems,
-          shippingInfo,
-          totalAmount,
-        },
-      });
-    }
-  } catch (err) {
-    toast.error(err.response?.data?.message || "Failed to place order");
-  }
-};
-
 
   if (loading) return <div className="checkout-loading">Loading...</div>;
 
@@ -97,6 +100,7 @@ const Checkout = () => {
     <div>
       <h2>Checkout</h2>
       <div className="checkout-container">
+        {/* Left Form */}
         <div className="checkout-form">
           <h3>Shipping Information</h3>
           <input
@@ -191,20 +195,48 @@ const Checkout = () => {
           </select>
         </div>
 
+        {/* Right Summary */}
         <div className="checkout-summary">
           <h3>Order Summary</h3>
-          {cartItems.map((item) => {
-            const price = item.product.price * (1 - item.product.discount || 0);
-            return (
-              <div key={item.product._id + item.size} className="summary-item">
-                <span>
-                  {item.product.name} (Size: {item.size})
-                </span>
-                <span>Qty: {item.quantity}</span>
-                <span>₹{(price * item.quantity).toFixed(2)}</span>
-              </div>
-            );
-          })}
+          <table className="summary-table">
+            <thead>
+              <tr>
+                <th>Product</th>
+                <th>Size</th>
+                <th>Qty</th>
+                <th>Price</th>
+              </tr>
+            </thead>
+            <tbody>
+              {cartItems.map((item) => {
+                const price = item.product.finalPrice || item.product.price;
+
+                // Find the correct color object
+                const colorObj = item.product.colors.find(
+                  (c) => c.color === item.color
+                );
+
+                // Fallback to product's first image if not found
+                const productImage = colorObj?.images[0] || "";
+
+                return (
+                  <tr key={item.product._id + item.size}>
+                    <td className="product-cell">
+                      <img
+                        src={productImage}
+                        alt={item.product.name}
+                        className="summary-product-img"
+                      />
+                      <span>{item.product.name}</span>
+                    </td>
+                    <td>{item.size}</td>
+                    <td>{item.quantity}</td>
+                    <td>₹{(price * item.quantity).toFixed(2)}</td>
+                  </tr>
+                );
+              })}
+            </tbody>
+          </table>
           <h4>Total: ₹{calculateTotalAmount().toFixed(2)}</h4>
           <button className="place-order-btn" onClick={handlePlaceOrder}>
             Place Order

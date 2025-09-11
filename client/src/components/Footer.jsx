@@ -1,5 +1,7 @@
 import React from "react";
 import "../styles/Footer.css";
+import { Link } from "react-router-dom";
+
 
 const Footer = () => {
   return (
@@ -11,11 +13,34 @@ const Footer = () => {
           <div className="footer-column">
             <h4>Online Shopping</h4>
             <ul>
-              <li><a href="/category/men">Men</a></li>
-              <li><a href="/category/women">Women</a></li>
-              <li><a href="/category/kids">Kids</a></li>
-              <li><a href="/category/home-living">Home & Living</a></li>
-              <li><a href="/category/beauty">Beauty</a></li>
+              <li>
+                <Link to="/search?categories=Men">
+                  Men
+              </Link>
+              </li>
+              <li>
+                <Link to="/search?categories=Women">
+                  Women
+              </Link>
+              </li>
+              <li>
+                <Link to="/search?categories=Kids">
+                  Kids
+                </Link>
+              </li>
+              <li>
+                <Link to="/search?categories=Beauty">
+                  Beauty
+                </Link>
+              </li>
+              <li>
+                <Link to="/search?categories=Home%20%26%20Living">
+                  Home & Living
+                </Link>
+              </li>
+              <li><Link to="/search?categories=Art">
+                  Art
+              </Link></li>
             </ul>
           </div>
 
@@ -43,7 +68,7 @@ const Footer = () => {
 
         {/* Bottom Information */}
         <div className="footer-bottom">
-          <p>&copy; {new Date().getFullYear()} MyntraX. All rights reserved.</p>
+          <p>&copy; {new Date().getFullYear()} FashionZero. All rights reserved.</p>
           <p>Designed & Developed by Saifuddin Dhali</p>
         </div>
       </div>

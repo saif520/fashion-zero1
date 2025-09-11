@@ -39,7 +39,9 @@ const MyOrders = () => {
       await cancelOrderById(selectedOrderId);
       setOrders((prev) =>
         prev.map((order) =>
-          order._id === selectedOrderId ? { ...order, orderStatus: "Cancelled" } : order
+          order._id === selectedOrderId
+            ? { ...order, orderStatus: "Cancelled" }
+            : order
         )
       );
       toast.success("Order cancelled successfully.");
@@ -50,17 +52,18 @@ const MyOrders = () => {
     }
   };
 
-  if (loading) return <div className="orders-loading">Loading your orders...</div>;
+  if (loading)
+    return <div className="orders-loading">Loading your orders...</div>;
 
   return (
     <>
-      <Navbar/>
+      <Navbar />
       <div className="orders-container">
         <h2>My Orders</h2>
         {orders.length === 0 ? (
           <div className="no-orders-box">
             <p className="no-orders">You haven’t placed any orders yet.</p>
-            <Link to="/category/all" className="continue-shopping-btn">
+            <Link to="/" className="continue-shopping-btn">
               Continue Shopping
             </Link>
           </div>
@@ -69,28 +72,56 @@ const MyOrders = () => {
             {orders.map((order) => (
               <div className="order-card" key={order._id}>
                 <div className="order-top">
-                  <span><strong>Order ID:</strong> {order._id}</span>
+                  <span>
+                    <strong>Order ID:</strong> {order._id}
+                  </span>
                   <span className={`status ${order.orderStatus.toLowerCase()}`}>
                     {order.orderStatus}
                   </span>
                 </div>
                 <div className="order-details">
-                  <p><strong>Date:</strong> {new Date(order.createdAt).toLocaleDateString()}</p>
-                  <p><strong>Total:</strong> ₹{order.totalAmount.toFixed(2)}</p>
-                  <p><strong>Items:</strong> {order.orderItems.length}</p>
+                  <p>
+                    <strong>Date:</strong>{" "}
+                    {new Date(order.createdAt).toLocaleDateString()}
+                  </p>
+                  <p>
+                    <strong>Total:</strong> ₹{order.totalAmount.toFixed(2)}
+                  </p>
+                  <p>
+                    <strong>Items:</strong> {order.orderItems.length}
+                  </p>
                 </div>
+
                 <div className="order-items-preview">
-                  {order.orderItems.slice(0, 3).map((item, index) => (
-                    <div className="order-item-thumbnail" key={index}>
-                      <img
-                        src={item.product?.colors?.[0]?.images?.[0] || "/placeholder.png"}
-                        alt={item.product?.name || "Product"}
-                      />
-                      <span>{item.product?.name || "Deleted Product"}</span>
-                    </div>
-                  ))}
+                  {order.orderItems.slice(0, 3).map((item, index) => {
+                    // Find the correct color object for this item
+                    const colorObj = item.product?.colors?.find(
+                      (c) => c.color.toLowerCase() === item.color?.toLowerCase()
+                    );
+                    const image =
+                      colorObj?.images?.[0] ||
+                      item.product?.images?.[0] ||
+                      "/placeholder.png";
+
+                    return (
+                      <div className="order-item-thumbnail" key={index}>
+                        <img
+                          src={image}
+                          alt={item.product?.name || "Product"}
+                        />
+                        <span>
+                          {item.product?.name || "Deleted Product"}{" "}
+                          {item.color && (
+                            <span className="item-color">({item.color})</span>
+                          )}
+                        </span>
+                      </div>
+                    );
+                  })}
                   {order.orderItems.length > 3 && (
-                    <span className="more-items">+{order.orderItems.length - 3} more</span>
+                    <span className="more-items">
+                      +{order.orderItems.length - 3} more
+                    </span>
                   )}
                 </div>
 
