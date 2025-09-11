@@ -134,8 +134,60 @@ This project is licensed under the MIT License — see the [LICENSE](./LICENSE) 
 
 ---
 
-## 📸 Project Screenshot
+## 📸 Project Screenshots
 
+### 🏠 Home Page
 ![Home Page](client/src/assets/screenshots/home.png)
+
+### 🛍️ All Products
+![All Products](client/src/assets/screenshots/all_product.png)
+
+### 📄 Product Details
+![Product Details](client/src/assets/screenshots/product_details.png)
+
+### ⭐ Review Section
+![Review Section](client/src/assets/screenshots/review_section.png)
+
+### ❤️ Wishlist
+![Wishlist](client/src/assets/screenshots/wishlist.png)
+
+### 🛒 Cart
+![Cart](client/src/assets/screenshots/cart.png)
+
+### ✅ Checkout
+![Checkout](client/src/assets/screenshots/checkout.png)
+
+### 💳 Payment
+![Payment](client/src/assets/screenshots/payment.png)
+
+### 📬 Payment Status
+![Payment Status](client/src/assets/screenshots/payment_status.png)
+
+### 📦 My Orders
+![My Orders](client/src/assets/screenshots/my_orders.png)
+
+### 🔍 Order Details
+![Order Details](client/src/assets/screenshots/order_details.png)
+
+### ✍️ Review Page
+![Review](client/src/assets/screenshots/review.png)
+
+### 🧾 Register
+![Register](client/src/assets/screenshots/register.png)
+
+### 🔐 Login
+![Login](client/src/assets/screenshots/login.png)
+
+### 📲 OTP Verification
+![OTP Verification](client/src/assets/screenshots/otp_verification.png)
+
+### 🔁 Forgot Password
+![Forgot Password](client/src/assets/screenshots/forgot_password.png)
+
+### 🔄 Reset Password
+![Reset Password](client/src/assets/screenshots/reset_password.png)
+
+
+
 
 
