@@ -33,7 +33,7 @@ const OtpVerification = () => {
       email,otp: enteredOtp,
        phone
     };
-    await axios.post("http://localhost:8000/api/v1/user/otp-verification",data,{
+    await axios.post("https://fashion-zero-server.onrender.com/api/v1/user/otp-verification",data,{
       withCredentials:true,headers:{"Content-Type":"application/json"},
     }).then((res)=>{
       toast.success(res.data.message);
