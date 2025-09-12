@@ -1,7 +1,7 @@
 
 import React, { useEffect, useState } from "react";
 import { useNavigate } from "react-router-dom";
-import "../styles/wishlist.css";
+import "../styles/Wishlist.css";
 import {
   getMyWishlist,
   removeFromWishlist,
