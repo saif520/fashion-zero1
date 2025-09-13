@@ -140,7 +140,7 @@ This project is licensed under the MIT License — see the [LICENSE](./LICENSE) 
 ![Home Page](client/src/assets/screenshots/home.png)
 
 ### 🛍️ All Products
-![All Products](client/src/assets/screenshots/all_product.png)
+![All Products](client/src/assets/screenshots/product_listing.png)
 
 ### 📄 Product Details
 ![Product Details](client/src/assets/screenshots/product_details.png)
