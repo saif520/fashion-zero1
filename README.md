@@ -17,6 +17,20 @@ It includes a comprehensive **Admin Panel** for managing products, orders, users
 ## Video Walkthrough of the project
  👉 <a href="https://youtu.be/2N29GB4qw90?si=gL1B43rYzqPPwf_1">project presentation</a>
 
+ ## 📝 Important Notes
+
+✅ **Test Payments:**  
+For testing card payments, use the following Stripe test card details:  
+- **Card Number:** `4242 4242 4242 4242`  
+- **Expiry Date:** Any future date (MM/YY)  
+- **CVV:** Any 3-digit number  
+
+⚠ **Deployment Info:**  
+This project is hosted on **Render’s free tier**.  
+- The backend may take **5–30 seconds** to wake up if idle (cold start).  
+- First page load might be slightly delayed, but **subsequent requests will be fast**.
+
+
  ## ✨ Features
 
 ### 👤 User Features:
