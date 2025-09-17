@@ -14,7 +14,7 @@ import { removeUnverifiedAccounts } from "./automation/removeUnverifiedAccounts.
 import reviewRouter from './routes/reviewRouter.js';
 
 export const app = express();
-config({ path: "./config" });
+config({ path: "./.env" });
 
 app.use(
   cors({
