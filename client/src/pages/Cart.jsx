@@ -1,4 +1,3 @@
-
 // src/pages/Cart.jsx
 import React, { useEffect, useState } from "react";
 import { useNavigate } from "react-router-dom";
@@ -57,6 +56,9 @@ const Cart = () => {
       await removeCartItem({ productId, color, size });
       fetchCart();
       toast.success("Item removed from cart");
+
+      // ✅ Trigger global update for Navbar cart count
+      window.dispatchEvent(new Event("cartUpdated"));
     } catch (err) {
       toast.error(err.response?.data?.message || "Failed to remove item");
     }
@@ -67,6 +69,9 @@ const Cart = () => {
       await moveToWishlist({ productId, color, size });
       fetchCart();
       toast.success("Moved to wishlist");
+
+      // ✅ Trigger global update for Navbar cart count
+      window.dispatchEvent(new Event("cartUpdated"));
     } catch (err) {
       toast.error(err.response?.data?.message || "Failed to move item");
     }
@@ -196,3 +201,6 @@ const Cart = () => {
 };
 
 export default Cart;
+
+
+

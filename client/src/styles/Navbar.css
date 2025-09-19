@@ -193,6 +193,27 @@
   font-size: 20px;
 }
 
+/* Add this near .nav-icon styles */
+.cart-icon {
+  position: relative;
+}
+
+.cart-count {
+  position: absolute;
+  top: -6px;
+  right: -10px;
+  background-color: #ff3f6c;
+  color: white;
+  font-size: 12px;
+  font-weight: bold;
+  padding: 2px 6px;
+  border-radius: 50%;
+  min-width: 18px;
+  text-align: center;
+  line-height: 1.2;
+}
+
+
 /* ===== Extra small devices (portrait phones) ===== */
 @media (max-width: 575.98px) {
   .hamburger {

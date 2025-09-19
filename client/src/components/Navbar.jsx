@@ -1,4 +1,3 @@
-
 import React, { useState, useRef, useEffect } from "react";
 import { Link, useNavigate } from "react-router-dom";
 import {
@@ -10,6 +9,7 @@ import {
 } from "react-icons/fa";
 import "../styles/Navbar.css";
 import ProfileDropdown from "./ProfileDropdown";
+import { getMyCart } from "../services/cartServices"; // ✅ Import your cart API service
 
 const categoryData = {
   Men: {
@@ -75,9 +75,27 @@ const Navbar = () => {
   const [activeCategory, setActiveCategory] = useState(null);
   const [keyword, setKeyword] = useState("");
   const [showProfileDropdown, setShowProfileDropdown] = useState(false);
+  const [cartCount, setCartCount] = useState(0); // ✅ New state for cart count
   const navigate = useNavigate();
   const dropdownRef = useRef(null);
   const hoverTimeout = useRef(null);
+
+  // ✅ Fetch cart count
+  useEffect(() => {
+    const fetchCart = async () => {
+      try {
+        const data = await getMyCart();
+        setCartCount(data?.cart?.items?.length || 0); // ✅ Just length
+      } catch (err) {
+        console.error("Failed to fetch cart", err);
+      }
+    };
+    fetchCart();
+
+    const handleCartUpdate = () => fetchCart();
+    window.addEventListener("cartUpdated", handleCartUpdate);
+    return () => window.removeEventListener("cartUpdated", handleCartUpdate);
+  }, []);
 
   const handleSearch = (e) => {
     e.preventDefault();
@@ -112,8 +130,10 @@ const Navbar = () => {
               onMouseEnter={() => setActiveCategory(main)}
               onMouseLeave={() => setActiveCategory(null)}
             >
-              {/* 🔗 Main category links */}
-              <Link to={`/search?categories=${encodeURIComponent(main)}`} className="main-link">
+              <Link
+                to={`/search?categories=${encodeURIComponent(main)}`}
+                className="main-link"
+              >
                 {main}
               </Link>
               {activeCategory === main && (
@@ -121,18 +141,24 @@ const Navbar = () => {
                   {Object.entries(categoryData[main]).map(
                     ([section, items]) => (
                       <div key={section} className="mega-column">
-                        {/* 🔗 Section link (e.g., Topwear, Bottomwear) */}
                         <h4>
-                          <Link to={`/search?categories=${encodeURIComponent(main)},${encodeURIComponent(section)}`}>
+                          <Link
+                            to={`/search?categories=${encodeURIComponent(
+                              main
+                            )},${encodeURIComponent(section)}`}
+                          >
                             {section}
                           </Link>
                         </h4>
                         <ul>
                           {items.map((item) => (
                             <li key={item}>
-                              {/* 🔗 Subcategory links */}
                               <Link
-                                to={`/search?categories=${encodeURIComponent(main)},${encodeURIComponent(section)},${encodeURIComponent(item)}`}
+                                to={`/search?categories=${encodeURIComponent(
+                                  main
+                                )},${encodeURIComponent(
+                                  section
+                                )},${encodeURIComponent(item)}`}
                               >
                                 {item}
                               </Link>
@@ -162,7 +188,7 @@ const Navbar = () => {
       </div>
 
       <div className="navbar-right">
-        {/* Profile Hover with Delay */}
+        {/* Profile Dropdown */}
         <div
           className="nav-icon"
           onMouseEnter={() => {
@@ -197,8 +223,11 @@ const Navbar = () => {
           <FaHeart />
           <span>Wishlist</span>
         </Link>
-        <Link to="/cart" className="nav-icon">
+
+        {/* ✅ Bag with count badge */}
+        <Link to="/cart" className="nav-icon cart-icon">
           <FaShoppingBag />
+          {cartCount > 0 && <span className="cart-count">{cartCount}</span>}
           <span>Bag</span>
         </Link>
       </div>
