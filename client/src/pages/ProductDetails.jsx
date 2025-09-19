@@ -111,12 +111,13 @@ const ProductDetails = () => {
         size: selectedSize,
         quantity,
       });
+
       toast.success("Product added to bag!");
-      await getMyCart();
+
+      // ✅ Trigger global event so Navbar updates cart count without refresh
+      window.dispatchEvent(new Event("cartUpdated"));
     } catch (error) {
-      toast.error(
-        error?.response?.data?.message || "Failed to add to bag."
-      );
+      toast.error(error?.response?.data?.message || "Failed to add to bag.");
       console.error(error?.response?.data || error.message);
     }
   };
@@ -140,7 +141,9 @@ const ProductDetails = () => {
       });
       toast.success(res.message || "Added to wishlist!");
     } catch (error) {
-      toast.error(error?.response?.data?.message || "Failed to add to wishlist.");
+      toast.error(
+        error?.response?.data?.message || "Failed to add to wishlist."
+      );
     }
   };
 
