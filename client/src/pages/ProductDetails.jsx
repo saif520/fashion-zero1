@@ -89,7 +89,7 @@ const ProductDetails = () => {
 
   const handleAddToCart = async () => {
     if (!isAuthenticated) {
-      toast.info("Please log in to add items to your cart.");
+      toast.info("Please login to add items to your bag.");
       navigate(`/auth?redirect=/product/${id}&type=login`);
       return;
     }
@@ -111,11 +111,11 @@ const ProductDetails = () => {
         size: selectedSize,
         quantity,
       });
-      toast.success("Product added to cart!");
+      toast.success("Product added to bag!");
       await getMyCart();
     } catch (error) {
       toast.error(
-        error?.response?.data?.message || "Failed to add to cart."
+        error?.response?.data?.message || "Failed to add to bag."
       );
       console.error(error?.response?.data || error.message);
     }
