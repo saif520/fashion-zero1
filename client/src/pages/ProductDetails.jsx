@@ -1,4 +1,3 @@
-
 // src/pages/ProductDetails.jsx
 import React, { useEffect, useState, useContext } from "react";
 import { useNavigate, useParams, useLocation } from "react-router-dom";
@@ -29,6 +28,8 @@ const ProductDetails = () => {
   const [selectedSize, setSelectedSize] = useState("");
   const [quantity, setQuantity] = useState(1);
 
+  const [selectedImage, setSelectedImage] = useState("");
+
   const [reviews, setReviews] = useState([]);
   const [breakdown, setBreakdown] = useState([]);
 
@@ -40,7 +41,6 @@ const ProductDetails = () => {
 
   const totalRatings = breakdown.reduce((sum, item) => sum + item.count, 0);
 
-  // ✅ Load product, reviews, and color from URL
   useEffect(() => {
     const fetchData = async () => {
       try {
@@ -48,18 +48,18 @@ const ProductDetails = () => {
         const prod = productRes.data.product;
         setProduct(prod);
 
-        // Auto-select color from URL
         const urlParams = new URLSearchParams(location.search);
         const colorParam = urlParams.get("color");
 
+        let initialColor = null;
         if (colorParam) {
-          const matchedColor = prod.colors?.find(
+          initialColor = prod.colors?.find(
             (c) => c.color.toLowerCase() === colorParam.toLowerCase()
           );
-          setSelectedColor(matchedColor || prod.colors?.[0] || null);
-        } else {
-          setSelectedColor(prod.colors?.[0] || null);
         }
+        initialColor = initialColor || prod.colors?.[0] || null;
+
+        setSelectedColor(initialColor);
 
         const reviewRes = await getProductReviews(id);
         setReviews(reviewRes.data.reviews);
@@ -79,7 +79,14 @@ const ProductDetails = () => {
     fetchData();
   }, [id, location.search]);
 
-  // ✅ Add to Cart with color, size, quantity
+  useEffect(() => {
+    if (selectedColor?.images?.length) {
+      setSelectedImage(selectedColor.images[0]);
+    } else {
+      setSelectedImage("");
+    }
+  }, [selectedColor]);
+
   const handleAddToCart = async () => {
     if (!isAuthenticated) {
       toast.info("Please log in to add items to your cart.");
@@ -100,7 +107,7 @@ const ProductDetails = () => {
     try {
       await addToCart({
         productId: product._id,
-        color: selectedColor.color, // ✅ include color
+        color: selectedColor.color,
         size: selectedSize,
         quantity,
       });
@@ -115,30 +122,28 @@ const ProductDetails = () => {
   };
 
   const handleAddToWishlist = async () => {
-  if (!isAuthenticated) {
-    toast.info("Please log in to add items to your wishlist.");
-    navigate(`/auth?redirect=/product/${id}&type=login`);
-    return;
-  }
+    if (!isAuthenticated) {
+      toast.info("Please log in to add items to your wishlist.");
+      navigate(`/auth?redirect=/product/${id}&type=login`);
+      return;
+    }
 
-  if (!selectedColor) {
-    toast.warn("Please select a color.");
-    return;
-  }
+    if (!selectedColor) {
+      toast.warn("Please select a color.");
+      return;
+    }
 
-  try {
-    const res = await addToWishlist({
-      productId: product._id,
-      color: selectedColor.color, // 🎨 only product + color
-    });
-    toast.success(res.message || "Added to wishlist!");
-  } catch (error) {
-    toast.error(error?.response?.data?.message || "Failed to add to wishlist.");
-  }
-};
+    try {
+      const res = await addToWishlist({
+        productId: product._id,
+        color: selectedColor.color,
+      });
+      toast.success(res.message || "Added to wishlist!");
+    } catch (error) {
+      toast.error(error?.response?.data?.message || "Failed to add to wishlist.");
+    }
+  };
 
-
-  // ✅ Sizes depend on selected color
   const sizeOptions = selectedColor?.stock?.map((s) => s.size) || [
     "S",
     "M",
@@ -154,12 +159,31 @@ const ProductDetails = () => {
       <Navbar />
       <div className="product-detail-container">
         <div className="product-detail-card">
-          <div className="product-image-wrapper">
-            <img
-              src={selectedColor?.images?.[0] || "/no-image.png"}
-              alt={product.name}
-              className="product-detail-image"
-            />
+          {/* ✅ Image + Thumbnail in a row */}
+          <div className="product-image-gallery">
+            {selectedColor?.images?.length > 1 && (
+              <div className="thumbnail-list">
+                {selectedColor.images.map((img, index) => (
+                  <img
+                    key={index}
+                    src={img}
+                    alt={`${product.name} ${index + 1}`}
+                    className={`thumbnail ${
+                      selectedImage === img ? "active" : ""
+                    }`}
+                    onClick={() => setSelectedImage(img)}
+                  />
+                ))}
+              </div>
+            )}
+
+            <div className="product-image-wrapper">
+              <img
+                src={selectedImage || "/no-image.png"}
+                alt={product.name}
+                className="product-detail-image"
+              />
+            </div>
           </div>
 
           <div className="product-info">
@@ -191,7 +215,6 @@ const ProductDetails = () => {
               <strong>Category:</strong> {product.category}
             </p>
 
-            {/* ✅ Color Selector */}
             {product.colors && product.colors.length > 1 && (
               <div className="product-colors">
                 <p className="size-label">Select Color:</p>
@@ -218,7 +241,6 @@ const ProductDetails = () => {
               </div>
             )}
 
-            {/* ✅ Size Selector */}
             <div className="product-size">
               <p className="size-label">Select Size:</p>
               <div className="size-options">
@@ -236,7 +258,6 @@ const ProductDetails = () => {
               </div>
             </div>
 
-            {/* Quantity */}
             <div className="quantity-wrapper">
               <p className="size-label">Quantity:</p>
               <div className="quantity-control">
@@ -248,7 +269,6 @@ const ProductDetails = () => {
               </div>
             </div>
 
-            {/* Buttons */}
             <div className="product-buttons">
               <button className="btn-cart" onClick={handleAddToCart}>
                 Add to Bag
@@ -260,7 +280,6 @@ const ProductDetails = () => {
           </div>
         </div>
 
-        {/* ⭐ Rating Breakdown */}
         <div className="rating-breakdown">
           <h3>Rating Breakdown</h3>
           <ul>
@@ -284,7 +303,6 @@ const ProductDetails = () => {
           </ul>
         </div>
 
-        {/* 📝 Reviews */}
         <div className="review-section">
           <h3>Customer Reviews ({reviews.length})</h3>
           {reviews.length === 0 ? (
