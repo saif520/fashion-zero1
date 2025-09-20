@@ -236,9 +236,13 @@
     margin-left: auto;
     gap: 12px;
   }
-  .navbar-right .nav-icon span {
+ 
+
+  /* ✅ Hide only labels, keep the .cart-count visible */
+  .navbar-right .nav-icon span:not(.cart-count) {
     display: none;
   }
+
 
   .navbar-center {
     order: 3;
@@ -307,7 +311,9 @@
     margin-left: auto;
     gap: 12px;
   }
-  .navbar-right .nav-icon span {
+  
+  /* ✅ Hide only labels, keep the .cart-count visible */
+  .navbar-right .nav-icon span:not(.cart-count) {
     display: none;
   }
 
