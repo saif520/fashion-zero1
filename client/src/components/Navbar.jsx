@@ -1,4 +1,4 @@
-import React, { useState, useRef, useEffect } from "react";
+import React, { useState, useRef, useEffect, useContext } from "react";
 import { Link, useNavigate } from "react-router-dom";
 import {
   FaHeart,
@@ -10,6 +10,7 @@ import {
 import "../styles/Navbar.css";
 import ProfileDropdown from "./ProfileDropdown";
 import { getMyCart } from "../services/cartServices"; // ✅ Import your cart API service
+import { Context } from "../main"; // ✅ bring auth context
 
 const categoryData = {
   Men: {
@@ -80,22 +81,32 @@ const Navbar = () => {
   const dropdownRef = useRef(null);
   const hoverTimeout = useRef(null);
 
+  const { isAuthenticated } = useContext(Context); // ✅ get auth status from context
+
   // ✅ Fetch cart count
   useEffect(() => {
     const fetchCart = async () => {
+      if (!isAuthenticated) {
+        setCartCount(0); // 🔹 reset cart if not logged in
+        return;
+      }
       try {
         const data = await getMyCart();
-        setCartCount(data?.cart?.items?.length || 0); // ✅ Just length
+        setCartCount(data?.cart?.items?.length || 0);
       } catch (err) {
         console.error("Failed to fetch cart", err);
+        setCartCount(0);
       }
     };
+
+    // Run on mount and whenever auth changes
     fetchCart();
 
     const handleCartUpdate = () => fetchCart();
     window.addEventListener("cartUpdated", handleCartUpdate);
+
     return () => window.removeEventListener("cartUpdated", handleCartUpdate);
-  }, []);
+  }, [isAuthenticated]); // 🔹 refetch when login/logout changes
 
   const handleSearch = (e) => {
     e.preventDefault();
