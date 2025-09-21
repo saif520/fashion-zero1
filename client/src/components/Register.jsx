@@ -72,6 +72,7 @@ const Register = ({ redirectPath = "/" }) => {
                 value={"email"}
                 {...register("verificationMethod")}
                 required
+                defaultChecked
               />
               Email
             </label>
