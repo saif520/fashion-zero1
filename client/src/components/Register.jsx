@@ -18,14 +18,18 @@ const Register = ({ redirectPath = "/" }) => {
   const handleRegister = async (data) => {
     data.phone = `+91${data.phone}`;
     await axios
-      .post("https://fashion-zero-server.onrender.com/api/v1/user/register", data, {
+      .post("http://localhost:8000/api/v1/user/register", data, {
         withCredentials: true,
         headers: { "Content-Type": "application/json" },
       })
       .then((res) => {
         toast.success(res.data.message);
         // Pass redirect path as query param to OTP verification page
-        navigateTo(`/otp-verification/${data.email}/${data.phone}?redirect=${encodeURIComponent(redirectPath)}`);
+        navigateTo(
+          `/otp-verification/${data.email}/${
+            data.phone
+          }?redirect=${encodeURIComponent(redirectPath)}`
+        );
       })
       .catch((error) => {
         toast.error(error.response?.data?.message || "Registration failed");
@@ -37,13 +41,29 @@ const Register = ({ redirectPath = "/" }) => {
       <form className="auth-form" onSubmit={handleSubmit(handleRegister)}>
         <h2>Register</h2>
         <input type="text" placeholder="Name" required {...register("name")} />
-        <input type="email" placeholder="Email" required {...register("email")} />
+        <input
+          type="email"
+          placeholder="Email"
+          required
+          {...register("email")}
+        />
         <div>
           <span>+91</span>
-          <input type="number" placeholder="Phone" required {...register("phone")} />
+          <input
+            type="number"
+            placeholder="Phone"
+            required
+            {...register("phone")}
+          />
         </div>
-        <input type="password" placeholder="Password" required {...register("password")} />
+        <input
+          type="password"
+          placeholder="Password"
+          required
+          {...register("password")}
+        />
         <div className="verification-method">
+          <p>Choose verification method:</p> {/* 🔹 Added label */}
           <div className="wrapper">
             <label>
               <input
@@ -59,6 +79,7 @@ const Register = ({ redirectPath = "/" }) => {
               <input
                 type="radio"
                 name="verificationMethod"
+                disabled
                 value={"phone"}
                 {...register("verificationMethod")}
                 required
@@ -67,6 +88,7 @@ const Register = ({ redirectPath = "/" }) => {
             </label>
           </div>
         </div>
+
         <button type="submit">Register</button>
       </form>
     </div>
