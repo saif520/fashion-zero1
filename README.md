@@ -207,7 +207,28 @@ This project is licensed under the MIT License — see the [LICENSE](./LICENSE) 
 ---
 ### 📱 Mobile View  
 ---
-
+<p align="center">
+  <img src="client/src/assets/screenshots/mobile/1_home1.png" width="250" />
+  <img src="client/src/assets/screenshots/mobile/2_product1.png" width="250" />
+  <img src="client/src/assets/screenshots/mobile/3_product2.png" width="250" />
+  <img src="client/src/assets/screenshots/mobile/4_filter1.png" width="250" />
+  <img src="client/src/assets/screenshots/mobile/5_productDetails1.png" width="250" />
+  <img src="client/src/assets/screenshots/mobile/6_productDetails2.png" width="250" />
+  <img src="client/src/assets/screenshots/mobile/7_productDetails3.png" width="250" />
+  <img src="client/src/assets/screenshots/mobile/8_wishlist1.png" width="250" />
+  <img src="client/src/assets/screenshots/mobile/9_cart1.png" width="250" />
+  <img src="client/src/assets/screenshots/mobile/10_checkout1.png" width="250" />
+  <img src="client/src/assets/screenshots/mobile/11_payment1.png" width="250" />
+  <img src="client/src/assets/screenshots/mobile/12_payment2.png" width="250" />
+  <img src="client/src/assets/screenshots/mobile/13_myOrder1.png" width="250" />
+  <img src="client/src/assets/screenshots/mobile/14_orderDetails1.png" width="250" />
+  <img src="client/src/assets/screenshots/mobile/15_review1.png" width="250" />
+  <img src="client/src/assets/screenshots/mobile/16_register1.png" width="250" />
+  <img src="client/src/assets/screenshots/mobile/17_login1.png" width="250" />
+  <img src="client/src/assets/screenshots/mobile/18_otpverification1.png" width="250" />
+  <img src="client/src/assets/screenshots/mobile/19_forgotPassword1.png" width="250" />
+  <img src="client/src/assets/screenshots/mobile/20_resetPassword1.png" width="250" />
+</p>
 
 
 
