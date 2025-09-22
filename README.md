@@ -149,6 +149,9 @@ This project is licensed under the MIT License — see the [LICENSE](./LICENSE) 
 ---
 
 ## 📸 Project Screenshots
+---
+### 💻 Desktop View  
+---
 
 ### 🏠 Home Page
 ![Home Page](client/src/assets/screenshots/home.png)
@@ -200,6 +203,12 @@ This project is licensed under the MIT License — see the [LICENSE](./LICENSE) 
 
 ### 🔄 Reset Password
 ![Reset Password](client/src/assets/screenshots/reset_password.png)
+
+---
+### 📱 Mobile View  
+---
+
+
 
 
 
