@@ -154,60 +154,81 @@ This project is licensed under the MIT License — see the [LICENSE](./LICENSE) 
 ---
 
 ### 🏠 Home Page
-![Home Page](client/src/assets/screenshots/home.png)
+![Home Page](client/src/assets/screenshots/desktop/home.png)
 
 ### 🛍️ All Products
-![All Products](client/src/assets/screenshots/product_listing.png)
+![All Products](client/src/assets/screenshots/desktop/product_listing.png)
 
 ### 📄 Product Details
-![Product Details](client/src/assets/screenshots/product_details.png)
+![Product Details](client/src/assets/screenshots/desktop/product_details.png)
 
 ### ⭐ Review Section
-![Review Section](client/src/assets/screenshots/review_section.png)
+![Review Section](client/src/assets/screenshots/desktop/review_section.png)
 
 ### ❤️ Wishlist
-![Wishlist](client/src/assets/screenshots/wishlist.png)
+![Wishlist](client/src/assets/screenshots/desktop/wishlist.png)
 
 ### 🛒 Cart
-![Cart](client/src/assets/screenshots/cart.png)
+![Cart](client/src/assets/screenshots/desktop/cart.png)
 
 ### ✅ Checkout
-![Checkout](client/src/assets/screenshots/checkout.png)
+![Checkout](client/src/assets/screenshots/desktop/checkout.png)
 
 ### 💳 Payment
-![Payment](client/src/assets/screenshots/payment.png)
+![Payment](client/src/assets/screenshots/desktop/payment.png)
 
 ### 📬 Payment Status
-![Payment Status](client/src/assets/screenshots/payment_status.png)
+![Payment Status](client/src/assets/screenshots/desktop/payment_status.png)
 
 ### 📦 My Orders
-![My Orders](client/src/assets/screenshots/my_orders.png)
+![My Orders](client/src/assets/screenshots/desktop/my_orders.png)
 
 ### 🔍 Order Details
-![Order Details](client/src/assets/screenshots/order_details.png)
+![Order Details](client/src/assets/screenshots/desktop/order_details.png)
 
 ### ✍️ Review Page
-![Review](client/src/assets/screenshots/review.png)
+![Review](client/src/assets/screenshots/desktop/review.png)
 
 ### 🧾 Register
-![Register](client/src/assets/screenshots/register.png)
+![Register](client/src/assets/screenshots/desktop/register.png)
 
 ### 🔐 Login
-![Login](client/src/assets/screenshots/login.png)
+![Login](client/src/assets/screenshots/desktop/login.png)
 
 ### 📲 OTP Verification
-![OTP Verification](client/src/assets/screenshots/otp_verification.png)
+![OTP Verification](client/src/assets/screenshots/desktop/otp_verification.png)
 
 ### 🔁 Forgot Password
-![Forgot Password](client/src/assets/screenshots/forgot_password.png)
+![Forgot Password](client/src/assets/screenshots/desktop/forgot_password.png)
 
 ### 🔄 Reset Password
-![Reset Password](client/src/assets/screenshots/reset_password.png)
+![Reset Password](client/src/assets/screenshots/desktop/reset_password.png)
 
 ---
 ### 📱 Mobile View  
 ---
-
+<p align="center">
+  <img src="client/src/assets/screenshots/mobile/1_home1.png" width="250" />
+  <img src="client/src/assets/screenshots/mobile/2_product1.png" width="250" />
+  <img src="client/src/assets/screenshots/mobile/3_product2.png" width="250" />
+  <img src="client/src/assets/screenshots/mobile/4_filter1.png" width="250" />
+  <img src="client/src/assets/screenshots/mobile/5_productDetails1.png" width="250" />
+  <img src="client/src/assets/screenshots/mobile/6_productDetails2.png" width="250" />
+  <img src="client/src/assets/screenshots/mobile/7_productDetails3.png" width="250" />
+  <img src="client/src/assets/screenshots/mobile/8_wishlist1.png" width="250" />
+  <img src="client/src/assets/screenshots/mobile/9_cart1.png" width="250" />
+  <img src="client/src/assets/screenshots/mobile/10_checkout1.png" width="250" />
+  <img src="client/src/assets/screenshots/mobile/11_payment1.png" width="250" />
+  <img src="client/src/assets/screenshots/mobile/12_payment2.png" width="250" />
+  <img src="client/src/assets/screenshots/mobile/13_myOrder1.png" width="250" />
+  <img src="client/src/assets/screenshots/mobile/14_orderDetails1.png" width="250" />
+  <img src="client/src/assets/screenshots/mobile/15_review1.png" width="250" />
+  <img src="client/src/assets/screenshots/mobile/16_register1.png" width="250" />
+  <img src="client/src/assets/screenshots/mobile/17_login1.png" width="250" />
+  <img src="client/src/assets/screenshots/mobile/18_otpverification1.png" width="250" />
+  <img src="client/src/assets/screenshots/mobile/19_forgotPassword1.png" width="250" />
+  <img src="client/src/assets/screenshots/mobile/20_resetPassword1.png" width="250" />
+</p>
 
 
 
