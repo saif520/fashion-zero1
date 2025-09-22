@@ -151,7 +151,7 @@ This project is licensed under the MIT License — see the [LICENSE](./LICENSE) 
 ## 📸 Project Screenshots
 ---
 ### 💻 Desktop View  
---
+---
 
 ### 🏠 Home Page
 ![Home Page](client/src/assets/screenshots/home.png)
