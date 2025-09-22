@@ -157,52 +157,52 @@ This project is licensed under the MIT License — see the [LICENSE](./LICENSE) 
 ![Home Page](client/src/assets/screenshots/desktop/home.png)
 
 ### 🛍️ All Products
-![All Products](client/src/assets/screenshots/product_listing.png)
+![All Products](client/src/assets/screenshots/desktop/product_listing.png)
 
 ### 📄 Product Details
-![Product Details](client/src/assets/screenshots/product_details.png)
+![Product Details](client/src/assets/screenshots/desktop/product_details.png)
 
 ### ⭐ Review Section
-![Review Section](client/src/assets/screenshots/review_section.png)
+![Review Section](client/src/assets/screenshots/desktop/review_section.png)
 
 ### ❤️ Wishlist
-![Wishlist](client/src/assets/screenshots/wishlist.png)
+![Wishlist](client/src/assets/screenshots/desktop/wishlist.png)
 
 ### 🛒 Cart
-![Cart](client/src/assets/screenshots/cart.png)
+![Cart](client/src/assets/screenshots/desktop/cart.png)
 
 ### ✅ Checkout
-![Checkout](client/src/assets/screenshots/checkout.png)
+![Checkout](client/src/assets/screenshots/desktop/checkout.png)
 
 ### 💳 Payment
-![Payment](client/src/assets/screenshots/payment.png)
+![Payment](client/src/assets/screenshots/desktop/payment.png)
 
 ### 📬 Payment Status
-![Payment Status](client/src/assets/screenshots/payment_status.png)
+![Payment Status](client/src/assets/screenshots/desktop/payment_status.png)
 
 ### 📦 My Orders
-![My Orders](client/src/assets/screenshots/my_orders.png)
+![My Orders](client/src/assets/screenshots/desktop/my_orders.png)
 
 ### 🔍 Order Details
-![Order Details](client/src/assets/screenshots/order_details.png)
+![Order Details](client/src/assets/screenshots/desktop/order_details.png)
 
 ### ✍️ Review Page
-![Review](client/src/assets/screenshots/review.png)
+![Review](client/src/assets/screenshots/desktop/review.png)
 
 ### 🧾 Register
-![Register](client/src/assets/screenshots/register.png)
+![Register](client/src/assets/screenshots/desktop/register.png)
 
 ### 🔐 Login
-![Login](client/src/assets/screenshots/login.png)
+![Login](client/src/assets/screenshots/desktop/login.png)
 
 ### 📲 OTP Verification
-![OTP Verification](client/src/assets/screenshots/otp_verification.png)
+![OTP Verification](client/src/assets/screenshots/desktop/otp_verification.png)
 
 ### 🔁 Forgot Password
-![Forgot Password](client/src/assets/screenshots/forgot_password.png)
+![Forgot Password](client/src/assets/screenshots/desktop/forgot_password.png)
 
 ### 🔄 Reset Password
-![Reset Password](client/src/assets/screenshots/reset_password.png)
+![Reset Password](client/src/assets/screenshots/desktop/reset_password.png)
 
 ---
 ### 📱 Mobile View  
