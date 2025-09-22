@@ -154,7 +154,7 @@ This project is licensed under the MIT License — see the [LICENSE](./LICENSE) 
 ---
 
 ### 🏠 Home Page
-![Home Page](client/src/assets/screenshots/home.png)
+![Home Page](client/src/assets/screenshots/desktop/home.png)
 
 ### 🛍️ All Products
 ![All Products](client/src/assets/screenshots/product_listing.png)
