@@ -48,12 +48,12 @@
 }
 
 .otp-input:focus {
-  border-color: #0cbb69;
+  border-color: #fa618a;
   background: #fff;
 }
 
 .verify-button {
-  background: #0cbb69;
+  background: #fa618a;
   color: #fff;
   font-size: 1rem;
   padding: 12px 20px;
@@ -65,5 +65,5 @@
 }
 
 .verify-button:hover {
-  background: #068047;
+  background: #fa618a;
 }
