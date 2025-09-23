@@ -10,6 +10,13 @@ It includes a comprehensive **Admin Panel** for managing products, orders, users
 
 **Frontend | Backend | Fullstack** → ✅ Fullstack
 
+---
+## 📝 Deployment Info  
+
+⚠ This project is hosted on **Render’s free tier**.  
+- The backend may take **5–30 seconds** to wake up if idle (cold start).  
+- First page load might be slightly delayed, but **subsequent requests will be fast**. 
+
 ## 🚀 Live Demo
 
 👉 [**fashion zero**](https://fashion-zero-client.onrender.com/)
@@ -24,13 +31,7 @@ For testing card payments, use the following Stripe test card details:
 - **Card Number:** `4242 4242 4242 4242`  
 - **Expiry Date:** Any future date (MM/YY)  
 - **CVV:** Any 3-digit number  
-
-⚠ **Deployment Info:**  
-This project is hosted on **Render’s free tier**.  
-- The backend may take **5–30 seconds** to wake up if idle (cold start).  
-- First page load might be slightly delayed, but **subsequent requests will be fast**.
-
-
+---
  ## ✨ Features
 
 ### 👤 User Features:
