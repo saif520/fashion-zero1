@@ -93,7 +93,7 @@ async function sendVerificationCode(
   try {
     if (verificationMethod === "email") {
       const message = generateEmailTemplate(verificationCode);
-      await sendEmail({ email, subject: "Your Verification Code", message });
+      sendEmail({ email, subject: "Your Verification Code", message });
       res.status(200).json({
         success: true,
         message: `Verification email successfully sent to ${name}`,
