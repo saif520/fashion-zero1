@@ -1,3 +1,4 @@
+//src/pages/Home.jsx
 import React, { useState, useEffect } from "react";
 import "../styles/Home.css";
 import { Link } from "react-router-dom";
